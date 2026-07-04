@@ -33,6 +33,9 @@ export function SubtopicPage() {
   if (!match) return <p className="text-gray-500">Sub-topic not found.</p>
 
   const { section, topic, subtopic } = match
+  const isVideoLink = (url) => url.includes('youtube.com') || url.includes('youtu.be')
+  const videoLinks = content ? content.resources.filter((r) => isVideoLink(r.url)) : []
+  const otherResources = content ? content.resources.filter((r) => !isVideoLink(r.url)) : []
 
   return (
     <div>
@@ -87,10 +90,30 @@ export function SubtopicPage() {
             </section>
           )}
 
+          {videoLinks.length > 0 && (
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">More Video Explainers</h2>
+              <ul className="space-y-1">
+                {videoLinks.map((r) => (
+                  <li key={r.url}>
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-indigo-600 hover:underline text-sm"
+                    >
+                      {r.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Free Resources</h2>
             <ul className="space-y-1">
-              {content.resources.map((r) => (
+              {otherResources.map((r) => (
                 <li key={r.url}>
                   <a
                     href={r.url}

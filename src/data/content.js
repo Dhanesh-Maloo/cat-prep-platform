@@ -18,6 +18,8 @@ Common traps: (1) extreme-language options (always, never, completely) are usual
       { title: 'CAT previous year RC passages (2019-2023 compiled)', url: 'https://www.iimcat.ac.in/per/g04/pub/187_A2Z1_Final.pdf' },
       { title: 'Free RC practice sets - Rau\'s IAS / TestFunda archive', url: 'https://testfunda.com' },
       { title: 'Tone & attitude word list (PDF)', url: 'https://www.vocabulary.com/lists/' },
+      { title: 'Alternative video: CAT 2025 RC Series - How to Solve Main Idea Questions', url: 'https://www.youtube.com/watch?v=73P--40QYVk' },
+      { title: 'Alternative video: How to Analyse RC Tones (CAT VARC 2024)', url: 'https://www.youtube.com/watch?v=fOKoXugVYG4' },
     ],
   },
 
@@ -37,6 +39,8 @@ Common traps: an option may look grammatically fine but violate the logical flow
       { title: 'Para jumbles practice set (100 questions, free PDF)', url: 'https://www.careerlauncher.com' },
       { title: 'CAT 2022-2023 official VARC papers', url: 'https://www.iimcat.ac.in' },
       { title: 'Sentence connector cheat-sheet', url: 'https://www.grammarly.com/blog/transition-words/' },
+      { title: 'Alternative video: Para Jumbles & Paragraph Odd One Out (CAT 2025 VARC One Shot)', url: 'https://www.youtube.com/watch?v=w2JubYI2mzI' },
+      { title: 'Alternative video: Master the PAIR-UP Technique for Para Jumbles', url: 'https://www.youtube.com/watch?v=jRGijoidr14' },
     ],
   },
 
@@ -56,6 +60,8 @@ Common traps: misreading whether a percentage is "of the total" versus "of a sub
       { title: 'CAT DILR previous year sets (2015-2023, free)', url: 'https://www.2iim.com/cat-question-papers' },
       { title: 'Caselet-to-table conversion practice worksheet', url: 'https://www.handakafunda.com' },
       { title: 'DI approximation techniques guide', url: 'https://www.wizako.com' },
+      { title: 'Alternative video: Understanding Caselets in Data Interpretation', url: 'https://www.youtube.com/watch?v=yw4zFw5_Fh4' },
+      { title: 'Alternative video: CAT Caselets - Important CAT DILR Topic', url: 'https://www.youtube.com/watch?v=Z3SWdERmAVE' },
     ],
   },
 
@@ -75,6 +81,8 @@ Common traps: confusing "percentage point change" with "percentage change" (a ra
       { title: 'Fraction-to-percentage table (printable PDF)', url: 'https://www.mbauniverse.com' },
       { title: 'CAT QA arithmetic previous year questions', url: 'https://www.2iim.com/cat-question-papers' },
       { title: 'Profit & Loss practice set with solutions', url: 'https://www.testfunda.com' },
+      { title: 'Alternative video: CAT Profit & Loss - All PYQs with Timer', url: 'https://www.youtube.com/watch?v=q6elvXFpJe0' },
+      { title: 'Alternative video: Profit Loss Discount - Basic to Advanced', url: 'https://www.youtube.com/watch?v=9v7Vp_mZPr4' },
     ],
   },
 
@@ -94,6 +102,8 @@ Common traps: (1) options that reverse a stated relationship (if A causes B, an 
       { title: 'Inference vs. assumption practice drills', url: 'https://www.2iim.com' },
       { title: 'CAT RC inference question bank (free)', url: 'https://www.handakafunda.com' },
       { title: 'Logical connectors reference sheet', url: 'https://www.grammarly.com/blog/transition-words/' },
+      { title: 'Alternative video: How to Solve Inference Based Questions in RC (Career Launcher)', url: 'https://www.youtube.com/watch?v=_rjuDn3G3p0' },
+      { title: 'Alternative video: Identify the RC Passage Types for Inference Questions', url: 'https://www.youtube.com/watch?v=vwDFjm1zinE' },
     ],
   },
 
@@ -113,6 +123,8 @@ Common traps: sign errors when reading off b and c from a rearranged equation (a
       { title: 'Quadratic equations formula sheet (PDF)', url: 'https://www.mbauniverse.com' },
       { title: 'CAT QA algebra previous year questions', url: 'https://www.2iim.com/cat-question-papers' },
       { title: 'Sum/product of roots practice set', url: 'https://www.wizako.com' },
+      { title: 'Alternative video: Quadratic Equations - Lecture 04 (CAT Quant)', url: 'https://www.youtube.com/watch?v=G3pESsL7s8U' },
+      { title: 'Alternative video: Quadratic Equations Formulas - Important Questions', url: 'https://www.youtube.com/watch?v=CGmRSgkVzJ4' },
     ],
   },
 }
