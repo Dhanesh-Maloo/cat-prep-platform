@@ -3,6 +3,14 @@
 // Idempotent: text-keyed tables use upsert; uuid-keyed tables are cleared
 // and re-inserted on each run.
 //
+// WARNING — destructive once real users exist: this clears `questions` and
+// `mock_tests` before reinserting, and both `question_attempts` and
+// `mock_test_attempts` reference them with `on delete cascade`. Re-running
+// this after people have taken mock tests or answered practice questions
+// will silently delete their attempt history along with the old rows. It's
+// only safe to re-run freely before real usage starts (or once you've moved
+// content authoring to the admin panel instead of this script).
+//
 // Usage: node --env-file=.env scripts/seed.mjs
 
 import { createClient } from '@supabase/supabase-js'

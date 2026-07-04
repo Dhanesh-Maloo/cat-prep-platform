@@ -1,42 +1,37 @@
-# Deploying to Cloudflare Pages
+# Deployed
 
-The app builds cleanly (`npm run build` → `dist/`), and a local git repo is
-already initialized. I can't finish this part myself — connecting Cloudflare
-Pages requires your own Cloudflare account (and usually a GitHub repo), which
-I don't have access to. Here's the path to finish it:
+**Live at: https://cat-prep-platform.pages.dev**
 
-## Option A — Git-connected (recommended, auto-deploys on every push)
-
-1. Create a new empty repo on GitHub (or GitLab).
-2. Push this project to it:
-   ```
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin <your-repo-url>
-   git branch -M main
-   git push -u origin main
-   ```
-3. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to Git**, pick this repo.
-4. Build settings:
-   - Framework preset: **Vite**
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-5. Add environment variables under **Settings → Environment variables** (Production and Preview):
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-   (Never add `SUPABASE_SERVICE_ROLE_KEY` here — that key must never reach a browser-shipped build.)
-6. Deploy. Every future push to `main` redeploys automatically.
-
-## Option B — Direct CLI deploy (no GitHub needed)
+Deployed via the Cloudflare Pages CLI (wrangler), logged in as your Cloudflare
+account (`Dhaneshmaloo09@gmail.com's Account`). To ship a new deployment after
+making changes:
 
 ```
-npm install -D wrangler
-npx wrangler login
-npm run build
-npx wrangler pages deploy dist --project-name=cat-prep-platform
+npm run deploy
 ```
-You'll need to set the same two `VITE_*` environment variables in the Cloudflare Pages project settings afterward (CLI deploys don't carry env vars automatically).
+
+That runs `vite build` (which bakes in `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`
+from your local `.env`) and pushes `dist/` straight to the `main` production branch.
+
+## How this was set up
+
+- `npx wrangler login` — OAuth login to Cloudflare in the browser
+- `npx wrangler pages project create cat-prep-platform --production-branch=main` — created the Pages project
+- `public/_redirects` containing `/* /index.html 200` — required for client-side
+  routing (React Router) so refreshing a deep link like `/syllabus` doesn't 404
+- `npx wrangler pages deploy dist --project-name=cat-prep-platform --branch=main` — the actual deploy
+
+## Want git-connected auto-deploy instead?
+
+Right now every deploy is a manual `npm run deploy`. If you'd rather have every
+`git push` auto-deploy:
+
+1. Push this repo to GitHub (a remote isn't configured yet — `git remote add origin <url>` then `git push -u origin main`).
+2. In the Cloudflare dashboard: **Workers & Pages → cat-prep-platform → Settings → Builds** → connect it to the GitHub repo.
+3. Build command: `npm run build`, output directory: `dist`.
+4. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` under **Settings → Environment variables** (never add `SUPABASE_SERVICE_ROLE_KEY` here — that key must never reach a browser-shipped build).
 
 ## Notes
 - The production bundle is ~910KB (mostly Recharts) — Vite warns about this but it's not a blocker. Worth revisiting with code-splitting (`React.lazy` on the Analytics/MockTestRunner routes) if load time becomes a concern.
 - `scripts/seed.mjs` is a local admin tool, not part of the deployed app — it's safe that it's in the repo since it never runs in the browser, but it does require `SUPABASE_SERVICE_ROLE_KEY` locally to run, which lives only in your `.env` (gitignored).
+- Remember: re-running `npm run seed` after real users exist will cascade-delete their mock test / question attempts (see the warning comment at the top of `scripts/seed.mjs`).
