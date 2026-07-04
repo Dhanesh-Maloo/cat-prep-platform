@@ -15,7 +15,7 @@ export function HomePage() {
       </h1>
       <p className="text-gray-600 max-w-xl mx-auto mb-8">
         Structured syllabus notes, curated videos, free resources, and topic-wise practice
-        across VARC, DILR, and Quant{!loading && ` — ${subtopicCount} sub-topics and counting`}.
+        across VARC, DILR, and Quant{!loading && ` - ${subtopicCount} sub-topics and counting`}.
       </p>
       <Link
         to="/syllabus"

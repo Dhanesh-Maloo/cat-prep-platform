@@ -28,7 +28,7 @@ export const REAL_SECTION_DURATION_MINUTES = 40
 
 export const mockTestQuestions = {
   'mock-full-01': [
-    // VARC — 5 questions
+    // VARC - 5 questions
     {
       id: 'mt1-varc-1',
       section: 'VARC',
@@ -36,7 +36,7 @@ export const mockTestQuestions = {
       question: 'The author\'s tone in the passage about urban migration is best described as:',
       options: ['Alarmist', 'Cautiously optimistic', 'Indifferent', 'Nostalgic'],
       correctIndex: 1,
-      explanation: 'The passage acknowledges risks but frames migration trends as a manageable, even beneficial, long-term shift — cautiously optimistic.',
+      explanation: 'The passage acknowledges risks but frames migration trends as a manageable, even beneficial, long-term shift - cautiously optimistic.',
       recommendedTimeSeconds: 90,
     },
     {
@@ -51,7 +51,7 @@ export const mockTestQuestions = {
         'Its effects on soil bacteria remained unstudied until 1985.',
       ],
       correctIndex: 1,
-      explanation: 'This sentence introduces the subject (a compound, a date) without relying on any prior context — a valid opener.',
+      explanation: 'This sentence introduces the subject (a compound, a date) without relying on any prior context - a valid opener.',
       recommendedTimeSeconds: 100,
     },
     {
@@ -85,7 +85,7 @@ export const mockTestQuestions = {
       recommendedTimeSeconds: 80,
     },
 
-    // DILR — 5 questions (mix of mcq/tita)
+    // DILR - 5 questions (mix of mcq/tita)
     {
       id: 'mt1-dilr-1',
       section: 'DILR',
@@ -112,7 +112,7 @@ export const mockTestQuestions = {
       question: 'A table shows quarterly revenue for 4 products. If Product C\'s Q3 revenue is described only as "twice Product A\'s Q2 figure," this is an example of:',
       options: ['Directly given data', 'Derived/inferred data requiring cross-referencing', 'Irrelevant data', 'A contradiction'],
       correctIndex: 1,
-      explanation: 'This value must be computed by referencing another cell — classic caselet-style derived data.',
+      explanation: 'This value must be computed by referencing another cell - classic caselet-style derived data.',
       recommendedTimeSeconds: 70,
     },
     {
@@ -135,7 +135,7 @@ export const mockTestQuestions = {
       recommendedTimeSeconds: 90,
     },
 
-    // QA — 5 questions (mix of mcq/tita)
+    // QA - 5 questions (mix of mcq/tita)
     {
       id: 'mt1-qa-1',
       section: 'QA',
@@ -143,7 +143,7 @@ export const mockTestQuestions = {
       question: 'A price is increased by 25% and then decreased by 20%. What is the net change?',
       options: ['5% increase', 'No change', '5% decrease', '10% increase'],
       correctIndex: 1,
-      explanation: 'Multiplying factors: 1.25 x 0.80 = 1.00 — exactly no net change.',
+      explanation: 'Multiplying factors: 1.25 x 0.80 = 1.00 - exactly no net change.',
       recommendedTimeSeconds: 60,
     },
     {

@@ -1,6 +1,6 @@
 // Dummy historical data shaped like what `mock_test_attempts` and
 // `question_attempts` would hold in Supabase. The analytics dashboard reads
-// this through src/api/hooks/useAnalyticsData.js — once real attempts are
+// this through src/api/hooks/useAnalyticsData.js - once real attempts are
 // stored, only that hook needs to change, not the chart components.
 
 export const mockTestAttempts = [

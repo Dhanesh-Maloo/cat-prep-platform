@@ -84,7 +84,7 @@ export function MockTestRunnerPage() {
 
       {showFiveMinuteWarning && (
         <div className="bg-red-50 text-red-700 text-sm text-center py-1.5 font-medium">
-          Less than 5 minutes remaining in this section — it will auto-submit at zero.
+          Less than 5 minutes remaining in this section - it will auto-submit at zero.
         </div>
       )}
 
@@ -96,7 +96,7 @@ export function MockTestRunnerPage() {
             </span>
             {question.type === 'tita' && (
               <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">
-                TITA — Type In The Answer
+                TITA - Type In The Answer
               </span>
             )}
           </div>

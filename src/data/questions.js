@@ -7,7 +7,7 @@ export const questions = {
       question: 'A passage that uses phrases like "arguably," "it seems," and "one might contend" most likely has a tone that is:',
       options: ['Aggressively dismissive', 'Hedged / cautious', 'Purely celebratory', 'Overtly sarcastic'],
       correctIndex: 1,
-      explanation: 'Hedging language ("arguably," "it seems") signals that the author is presenting a claim cautiously rather than asserting it outright — this is a hallmark of a measured, cautious tone rather than an extreme one.',
+      explanation: 'Hedging language ("arguably," "it seems") signals that the author is presenting a claim cautiously rather than asserting it outright - this is a hallmark of a measured, cautious tone rather than an extreme one.',
     },
     {
       id: 'q2',
@@ -26,7 +26,7 @@ export const questions = {
       question: 'An answer option for a tone question that uses the word "always" or "completely" is usually:',
       options: ['Correct, because it is precise', 'Suspicious, since most tones are measured, not extreme', 'Irrelevant to tone questions', 'Only wrong in DILR, not VARC'],
       correctIndex: 1,
-      explanation: 'Extreme-language options are a classic trap — CAT passages are rarely absolute in tone, so options with "always/never/completely" should raise suspicion.',
+      explanation: 'Extreme-language options are a classic trap - CAT passages are rarely absolute in tone, so options with "always/never/completely" should raise suspicion.',
     },
   ],
 
@@ -114,7 +114,7 @@ export const questions = {
       question: 'A price is increased by 20% and then decreased by 10%. What is the net percentage change?',
       options: ['10% increase', '8% increase', '30% increase', '2% decrease'],
       correctIndex: 1,
-      explanation: 'Using multiplying factors: 1.20 x 0.90 = 1.08, i.e. a net 8% increase — successive percentage changes do not simply add or subtract.',
+      explanation: 'Using multiplying factors: 1.20 x 0.90 = 1.08, i.e. a net 8% increase - successive percentage changes do not simply add or subtract.',
     },
     {
       id: 'q2',
@@ -133,7 +133,7 @@ export const questions = {
         'No real change',
       ],
       correctIndex: 1,
-      explanation: 'The absolute rise is 5 percentage points, but relative to the original 20%, that is a 25% increase (5/20) — the two phrasings are easy to conflate.',
+      explanation: 'The absolute rise is 5 percentage points, but relative to the original 20%, that is a 25% increase (5/20) - the two phrasings are easy to conflate.',
     },
     {
       id: 'q4',
@@ -155,7 +155,7 @@ export const questions = {
         'The policy was popular with customers',
       ],
       correctIndex: 1,
-      explanation: 'Only the restated fact itself is a valid inference — causation, counterfactuals, and popularity are all unsupported extrapolations.',
+      explanation: 'Only the restated fact itself is a valid inference - causation, counterfactuals, and popularity are all unsupported extrapolations.',
     },
     {
       id: 'q2',
@@ -167,14 +167,14 @@ export const questions = {
         'Whether it is the most interesting option',
       ],
       correctIndex: 1,
-      explanation: 'If the passage could be true while the option is false, the option is not a necessary logical consequence — so it is not a valid inference.',
+      explanation: 'If the passage could be true while the option is false, the option is not a necessary logical consequence - so it is not a valid inference.',
     },
     {
       id: 'q3',
       question: 'A passage says "Some experts believe X." An option claiming "Most experts believe X" is:',
-      options: ['A valid inference', 'An overreach — too strong relative to "some"', 'Irrelevant to the passage', 'Definitely false'],
+      options: ['A valid inference', 'An overreach - too strong relative to "some"', 'Irrelevant to the passage', 'Definitely false'],
       correctIndex: 1,
-      explanation: 'Strengthening "some" to "most" goes beyond what the passage supports — a classic inference trap.',
+      explanation: 'Strengthening "some" to "most" goes beyond what the passage supports - a classic inference trap.',
     },
   ],
 

@@ -3,7 +3,7 @@ const MS_PER_DAY = 24 * 60 * 60 * 1000
 /**
  * Distributes subtopics across the weeks remaining until the exam date,
  * prioritizing subtopics with no attempts yet, then lowest accuracy first.
- * Only as many "topics" weeks are scheduled as there's actual content for —
+ * Only as many "topics" weeks are scheduled as there's actual content for -
  * once every subtopic has been placed, every remaining week (including the
  * last) becomes a revision/mock-test week rather than sitting empty.
  *
@@ -27,7 +27,7 @@ export function generateStudyPlan({ subtopics, statsBySubtopic, targetExamDateIS
   const ordered = [...subtopics].sort((a, b) => priority(a.id) - priority(b.id))
 
   const weeksAvailableForTopics = weekCount > 1 ? weekCount - 1 : weekCount
-  // Never schedule more "topics" weeks than there's content for — extra time
+  // Never schedule more "topics" weeks than there's content for - extra time
   // becomes revision, not empty weeks.
   const topicWeekCount = Math.max(1, Math.min(weeksAvailableForTopics, ordered.length))
   const perWeek = Math.max(1, Math.ceil(ordered.length / topicWeekCount))

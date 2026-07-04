@@ -9,7 +9,7 @@ const ERROR_TAG_LABELS = {
   time_pressure: 'Time pressure',
 }
 
-// Shared by both the dummy sample data and real Supabase data — both are
+// Shared by both the dummy sample data and real Supabase data - both are
 // normalized to the same { topic, section, isCorrect, timeTakenSeconds,
 // recommendedTimeSeconds, errorTag } / { date, rawScore, percentile, sectionScores }
 // shapes before reaching here.

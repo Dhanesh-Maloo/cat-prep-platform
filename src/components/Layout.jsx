@@ -56,7 +56,7 @@ export function Layout() {
         <Outlet />
       </main>
       <footer className="border-t border-gray-200 py-4 text-center text-xs text-gray-400">
-        CAT Prep Platform — Phase 1 MVP
+        CAT Prep Platform - Phase 1 MVP
       </footer>
     </div>
   )

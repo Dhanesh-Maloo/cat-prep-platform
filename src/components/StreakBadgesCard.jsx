@@ -19,7 +19,7 @@ export function StreakBadgesCard() {
       </div>
       <div className="flex flex-wrap gap-2">
         {earned.length === 0 ? (
-          <p className="text-sm text-gray-400">No badges yet — answer a question to get started.</p>
+          <p className="text-sm text-gray-400">No badges yet - answer a question to get started.</p>
         ) : (
           earned.map((b) => (
             <span

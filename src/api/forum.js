@@ -1,6 +1,6 @@
 import { supabase } from '../lib/supabaseClient'
 
-// author_name is stored directly on each row at post time — the `users`
+// author_name is stored directly on each row at post time - the `users`
 // table's RLS only allows reading your own row, so a join would return null
 // for every author except yourself.
 function authorNameFor(user) {

@@ -75,7 +75,7 @@ export function ResultsPage() {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-1">{test.title} — Results</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 mb-1">{test.title} - Results</h1>
       <p className="text-gray-500 text-sm mb-2">Scoring: +3 correct MCQ, -1 incorrect MCQ, +3/0 TITA (no negative).</p>
       {saveState === 'anonymous' && (
         <p className="text-xs text-amber-600 mb-6">
@@ -84,7 +84,7 @@ export function ResultsPage() {
       )}
       {saveState === 'saving' && <p className="text-xs text-gray-400 mb-6">Saving attempt...</p>}
       {saveState === 'saved' && <p className="text-xs text-green-600 mb-6">Attempt saved to your account.</p>}
-      {saveState === 'error' && <p className="text-xs text-red-500 mb-6">Couldn't save this attempt — it's still shown below.</p>}
+      {saveState === 'error' && <p className="text-xs text-red-500 mb-6">Couldn't save this attempt - it's still shown below.</p>}
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
         <StatCard label="Raw Score" value={`${result.rawScore} / ${result.maxScore}`} />
@@ -113,7 +113,7 @@ export function ResultsPage() {
         <>
           <h2 className="text-lg font-semibold text-gray-800 mb-1">What went wrong?</h2>
           <p className="text-sm text-gray-500 mb-3">
-            Tag each miss — this feeds your error-classification breakdown in Analytics.
+            Tag each miss - this feeds your error-classification breakdown in Analytics.
           </p>
           <div className="space-y-3 mb-10">
             {wrongQuestions.map((q) => {

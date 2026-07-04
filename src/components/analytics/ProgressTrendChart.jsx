@@ -12,7 +12,7 @@ export function ProgressTrendChart() {
         <div className="h-[260px] flex items-center justify-center text-sm text-gray-400 text-center px-8">
           {progressTrend.length === 0
             ? 'No mock test attempts yet.'
-            : `1 attempt so far — Raw score ${progressTrend[0].rawScore}, percentile ${progressTrend[0].percentile}. Complete another mock test to see a trend.`}
+            : `1 attempt so far - Raw score ${progressTrend[0].rawScore}, percentile ${progressTrend[0].percentile}. Complete another mock test to see a trend.`}
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={260}>

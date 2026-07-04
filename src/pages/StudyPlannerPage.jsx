@@ -74,7 +74,7 @@ export function StudyPlannerPage() {
 
       {!plan ? (
         <div className="bg-white border border-gray-200 rounded-lg p-8 text-center text-gray-500">
-          No plan yet — click "Generate Plan" to build one from your exam date and current progress.
+          No plan yet - click "Generate Plan" to build one from your exam date and current progress.
         </div>
       ) : (
         <div className="space-y-4">
@@ -86,7 +86,7 @@ export function StudyPlannerPage() {
               </div>
               {week.focus === 'revision' ? (
                 <p className="text-sm text-amber-700 bg-amber-50 rounded-lg px-3 py-2">
-                  Final stretch — take full mock tests and revise everything above rather than starting new topics.
+                  Final stretch - take full mock tests and revise everything above rather than starting new topics.
                 </p>
               ) : week.subtopicIds.length === 0 ? (
                 <p className="text-sm text-gray-400">Nothing scheduled.</p>

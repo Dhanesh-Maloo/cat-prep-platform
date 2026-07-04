@@ -36,7 +36,7 @@ export function ResetPasswordPage() {
     <div className="max-w-sm mx-auto py-12">
       <h1 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Choose a new password</h1>
       <p className="text-sm text-gray-500 text-center mb-6">
-        This only works if you followed a password reset link from your email — otherwise there's no
+        This only works if you followed a password reset link from your email - otherwise there's no
         active reset session and saving will fail.
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">

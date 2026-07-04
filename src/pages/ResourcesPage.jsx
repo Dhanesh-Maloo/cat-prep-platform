@@ -10,7 +10,7 @@ export function ResourcesPage() {
     <div>
       <h1 className="text-2xl font-semibold text-gray-900 mb-2">Free Resource Hub</h1>
       <p className="text-gray-500 mb-6 text-sm">
-        Previous year papers, free video playlists, and formula sheets — aggregated from every sub-topic.
+        Previous year papers, free video playlists, and formula sheets - aggregated from every sub-topic.
       </p>
       <div className="space-y-6">
         {groups.map((group) => (

@@ -18,7 +18,7 @@ function isAttempted(question, answer) {
 /**
  * Persists a completed mock test attempt for a logged-in user: one
  * mock_test_attempts row plus one question_attempts row per attempted question.
- * Returns null (and logs) on failure rather than throwing — a failed save
+ * Returns null (and logs) on failure rather than throwing - a failed save
  * shouldn't block the user from seeing their results.
  */
 export async function saveMockTestAttempt({ userId, mockTestId, questions, answers, result }) {
@@ -71,7 +71,7 @@ export async function saveMockTestAttempt({ userId, mockTestId, questions, answe
 
 /**
  * Persists a single topic-practice question attempt. Fire-and-forget from the
- * caller's perspective — failures are logged, not surfaced, since practice
+ * caller's perspective - failures are logged, not surfaced, since practice
  * feedback shouldn't be blocked by a failed save.
  */
 export async function savePracticeAttempt({ userId, questionId, selectedIndex, isCorrect: correct, timeTakenSeconds }) {

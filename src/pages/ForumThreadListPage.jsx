@@ -40,7 +40,7 @@ export function ForumThreadListPage() {
       <p className="text-sm text-gray-400 mb-1">
         <Link to={`/subtopic/${subtopicId}`} className="hover:text-indigo-600">← {subtopicName}</Link>
       </p>
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Doubt Forum — {subtopicName}</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Doubt Forum - {subtopicName}</h1>
 
       {user ? (
         <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-lg p-4 mb-6 space-y-3">
@@ -71,7 +71,7 @@ export function ForumThreadListPage() {
       )}
 
       {threads.length === 0 ? (
-        <p className="text-gray-400 text-sm">No questions yet — be the first to ask.</p>
+        <p className="text-gray-400 text-sm">No questions yet - be the first to ask.</p>
       ) : (
         <ul className="space-y-2">
           {threads.map((t) => (

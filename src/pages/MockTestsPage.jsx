@@ -11,7 +11,7 @@ export function MockTestsPage() {
     <div>
       <h1 className="text-2xl font-semibold text-gray-900 mb-2">Mock Tests</h1>
       <p className="text-gray-500 text-sm mb-6">
-        Full-length and sectional tests that replicate the real CAT interface — timer, section lock,
+        Full-length and sectional tests that replicate the real CAT interface - timer, section lock,
         question navigation, and an on-screen calculator during QA.
       </p>
       <div className="space-y-3">
@@ -20,7 +20,7 @@ export function MockTestsPage() {
             <div>
               <h2 className="font-medium text-gray-900">{test.title}</h2>
               <p className="text-sm text-gray-500">
-                {test.sections.map((s) => s.name).join(' · ')} — {test.questionCount} questions
+                {test.sections.map((s) => s.name).join(' · ')} - {test.questionCount} questions
               </p>
             </div>
             <Link

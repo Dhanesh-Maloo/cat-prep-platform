@@ -1,4 +1,4 @@
-// APPROXIMATION ONLY — not official CAT percentile data.
+// APPROXIMATION ONLY - not official CAT percentile data.
 // Static score-to-percentile lookup, loosely modeled on publicly discussed
 // historical CAT score/percentile curves for a 3-section paper (raw score
 // range roughly -66 to +198). Replace with a real historical dataset before

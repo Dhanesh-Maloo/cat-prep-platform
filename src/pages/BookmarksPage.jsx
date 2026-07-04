@@ -34,7 +34,7 @@ export function BookmarksPage() {
 
       <h2 className="font-semibold text-gray-800 mb-2">Bookmarked Sub-topics</h2>
       {subtopicBookmarks.length === 0 ? (
-        <p className="text-sm text-gray-400 mb-6">None yet — bookmark a sub-topic from its notes page.</p>
+        <p className="text-sm text-gray-400 mb-6">None yet - bookmark a sub-topic from its notes page.</p>
       ) : (
         <ul className="space-y-1 mb-6">
           {subtopicBookmarks.map((b) => (
@@ -49,7 +49,7 @@ export function BookmarksPage() {
 
       <h2 className="font-semibold text-gray-800 mb-2">Bookmarked Questions</h2>
       {questionBookmarks.length === 0 ? (
-        <p className="text-sm text-gray-400">None yet — bookmark a question during practice.</p>
+        <p className="text-sm text-gray-400">None yet - bookmark a question during practice.</p>
       ) : (
         <ul className="space-y-2">
           {questionBookmarks.map((b) => (
