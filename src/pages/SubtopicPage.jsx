@@ -5,6 +5,7 @@ import { DifficultyBadge } from '../components/DifficultyBadge'
 import { useAuth } from '../lib/auth'
 import { supabase } from '../lib/supabaseClient'
 import { toggleSubtopicBookmark } from '../api/bookmarks'
+import { flattenSubtopics } from '../data/syllabus'
 
 export function SubtopicPage() {
   const { subtopicId } = useParams()
@@ -34,8 +35,15 @@ export function SubtopicPage() {
 
   const { section, topic, subtopic } = match
   const isVideoLink = (url) => url.includes('youtube.com') || url.includes('youtu.be')
-  const videoLinks = content ? content.resources.filter((r) => isVideoLink(r.url)) : []
-  const otherResources = content ? content.resources.filter((r) => !isVideoLink(r.url)) : []
+  const isBookLink = (title) => title.startsWith('Recommended Book:')
+  const videoLinks = content ? content.resources.filter((r) => isVideoLink(r.url) && !isBookLink(r.title)) : []
+  const bookLinks = content ? content.resources.filter((r) => isBookLink(r.title)) : []
+  const otherResources = content ? content.resources.filter((r) => !isVideoLink(r.url) && !isBookLink(r.title)) : []
+
+  const orderedSubtopics = flattenSubtopics()
+  const currentIndex = orderedSubtopics.findIndex((s) => s.id === subtopicId)
+  const prevSubtopic = currentIndex > 0 ? orderedSubtopics[currentIndex - 1] : null
+  const nextSubtopic = currentIndex >= 0 && currentIndex < orderedSubtopics.length - 1 ? orderedSubtopics[currentIndex + 1] : null
 
   return (
     <div>
@@ -110,6 +118,26 @@ export function SubtopicPage() {
             </section>
           )}
 
+          {bookLinks.length > 0 && (
+            <section>
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">Recommended Books & Reading</h2>
+              <ul className="space-y-1">
+                {bookLinks.map((r) => (
+                  <li key={r.url}>
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-indigo-600 hover:underline text-sm"
+                    >
+                      {r.title.replace('Recommended Book: ', '')}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Free Resources</h2>
             <ul className="space-y-1">
@@ -142,6 +170,23 @@ export function SubtopicPage() {
               Discuss this topic in the forum →
             </Link>
           </div>
+        </div>
+      )}
+
+      {(prevSubtopic || nextSubtopic) && (
+        <div className="flex items-center justify-between mt-10 pt-6 border-t border-gray-200">
+          {prevSubtopic ? (
+            <Link to={`/subtopic/${prevSubtopic.id}`} className="text-sm text-gray-600 hover:text-indigo-600 max-w-[45%]">
+              <span className="block text-xs text-gray-400">← Previous</span>
+              {prevSubtopic.name}
+            </Link>
+          ) : <span />}
+          {nextSubtopic ? (
+            <Link to={`/subtopic/${nextSubtopic.id}`} className="text-sm text-gray-600 hover:text-indigo-600 text-right max-w-[45%]">
+              <span className="block text-xs text-gray-400">Next →</span>
+              {nextSubtopic.name}
+            </Link>
+          ) : <span />}
         </div>
       )}
     </div>
