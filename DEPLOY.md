@@ -2,16 +2,9 @@
 
 **Live at: https://cat-prep-platform.pages.dev**
 
-Deployed via the Cloudflare Pages CLI (wrangler), logged in as your Cloudflare
-account (`Dhaneshmaloo09@gmail.com's Account`). To ship a new deployment after
-making changes:
-
-```
-npm run deploy
-```
-
-That runs `vite build` (which bakes in `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`
-from your local `.env`) and pushes `dist/` straight to the `main` production branch.
+Auto-deploys on every push to `main` via Cloudflare Pages' GitHub integration
+(connected under Settings → Builds). Just `git push` — no manual deploy step
+needed anymore.
 
 ## How this was set up
 
@@ -19,17 +12,18 @@ from your local `.env`) and pushes `dist/` straight to the `main` production bra
 - `npx wrangler pages project create cat-prep-platform --production-branch=main` — created the Pages project
 - `public/_redirects` containing `/* /index.html 200` — required for client-side
   routing (React Router) so refreshing a deep link like `/syllabus` doesn't 404
-- `npx wrangler pages deploy dist --project-name=cat-prep-platform --branch=main` — the actual deploy
+- Pushed this repo to GitHub (`Dhanesh-Maloo/cat-prep-platform`, private)
+- Connected the Cloudflare Pages project to that GitHub repo under **Settings → Builds**
+  - Build command: `npm run build`
+  - Build output directory: `dist`
+  - Production branch: `main`
+- Added `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` under **Settings → Environment variables**
+  (never `SUPABASE_SERVICE_ROLE_KEY` — that key must never reach a browser-shipped build)
 
-## Want git-connected auto-deploy instead?
+## Manual deploy (fallback)
 
-Right now every deploy is a manual `npm run deploy`. If you'd rather have every
-`git push` auto-deploy:
-
-1. Push this repo to GitHub (a remote isn't configured yet — `git remote add origin <url>` then `git push -u origin main`).
-2. In the Cloudflare dashboard: **Workers & Pages → cat-prep-platform → Settings → Builds** → connect it to the GitHub repo.
-3. Build command: `npm run build`, output directory: `dist`.
-4. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` under **Settings → Environment variables** (never add `SUPABASE_SERVICE_ROLE_KEY` here — that key must never reach a browser-shipped build).
+If the git integration is ever disconnected, `npm run deploy` still works as a
+manual fallback — it runs `vite build` then pushes `dist/` directly via wrangler.
 
 ## Notes
 - The production bundle is ~910KB (mostly Recharts) — Vite warns about this but it's not a blocker. Worth revisiting with code-splitting (`React.lazy` on the Analytics/MockTestRunner routes) if load time becomes a concern.
