@@ -74,9 +74,9 @@ export function MockTestRunnerPage() {
 
   return (
     <div className="-mx-4 -my-8 min-h-[calc(100vh-8.5rem)] flex flex-col bg-gray-50">
-      <div className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-        <div>
-          <h1 className="font-semibold text-gray-900">{test.title}</h1>
+      <div className="bg-white border-b border-gray-200 px-3 sm:px-6 py-3 flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <h1 className="font-semibold text-gray-900 truncate">{test.title}</h1>
           <p className="text-sm text-gray-500">{section.name}</p>
         </div>
         <Timer secondsRemaining={sectionTimeRemaining[section.key]} warning={showFiveMinuteWarning} />
@@ -88,8 +88,8 @@ export function MockTestRunnerPage() {
         </div>
       )}
 
-      <div className="flex-1 flex gap-6 p-6">
-        <div className="flex-1 bg-white border border-gray-200 rounded-lg p-6 relative">
+      <div className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-6 p-3 sm:p-6">
+        <div className="flex-1 bg-white border border-gray-200 rounded-lg p-4 sm:p-6 relative min-w-0">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm text-gray-500">
               Question {section.questionIds.indexOf(currentQuestionId) + 1} of {section.questionIds.length}
@@ -130,7 +130,7 @@ export function MockTestRunnerPage() {
             />
           )}
 
-          <div className="flex items-center gap-3 mt-8">
+          <div className="flex flex-wrap items-center gap-3 mt-8">
             <button
               type="button"
               onClick={() => toggleMarkForReview(question.id)}
@@ -152,7 +152,7 @@ export function MockTestRunnerPage() {
             <button
               type="button"
               onClick={goNext}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 ml-auto"
+              className="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 sm:ml-auto"
             >
               Save & Next
             </button>
@@ -175,7 +175,7 @@ export function MockTestRunnerPage() {
           )}
         </div>
 
-        <div className="w-64 bg-white border border-gray-200 rounded-lg p-4 h-fit">
+        <div className="w-full lg:w-64 bg-white border border-gray-200 rounded-lg p-4 h-fit">
           <QuestionNavPanel
             questionIds={section.questionIds}
             questionsById={questionsById}

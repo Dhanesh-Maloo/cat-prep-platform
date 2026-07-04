@@ -163,20 +163,20 @@ function SubtopicContentForm({ sections, onChanged }) {
         <Field label="Notes (leave blank to skip)">
           <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={4} className="input w-full" />
         </Field>
-        <div className="flex gap-2">
-          <Field label="YouTube video ID">
-            <input value={youtubeId} onChange={(e) => setYoutubeId(e.target.value)} className="input" />
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Field label="YouTube video ID" className="flex-1 min-w-0">
+            <input value={youtubeId} onChange={(e) => setYoutubeId(e.target.value)} className="input w-full" />
           </Field>
-          <Field label="Video title">
-            <input value={videoTitle} onChange={(e) => setVideoTitle(e.target.value)} className="input" />
+          <Field label="Video title" className="flex-1 min-w-0">
+            <input value={videoTitle} onChange={(e) => setVideoTitle(e.target.value)} className="input w-full" />
           </Field>
         </div>
-        <div className="flex gap-2">
-          <Field label="Resource title">
-            <input value={resourceTitle} onChange={(e) => setResourceTitle(e.target.value)} className="input" />
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Field label="Resource title" className="flex-1 min-w-0">
+            <input value={resourceTitle} onChange={(e) => setResourceTitle(e.target.value)} className="input w-full" />
           </Field>
-          <Field label="Resource URL">
-            <input value={resourceUrl} onChange={(e) => setResourceUrl(e.target.value)} className="input" />
+          <Field label="Resource URL" className="flex-1 min-w-0">
+            <input value={resourceUrl} onChange={(e) => setResourceUrl(e.target.value)} className="input w-full" />
           </Field>
         </div>
         {status && <p className="text-sm text-indigo-600">{status}</p>}
@@ -279,9 +279,9 @@ function QuestionForm({ sections }) {
   )
 }
 
-function Field({ label, children }) {
+function Field({ label, children, className = '' }) {
   return (
-    <label className="block text-sm">
+    <label className={`block text-sm ${className}`}>
       <span className="block text-gray-600 mb-1">{label}</span>
       {children}
     </label>

@@ -145,7 +145,7 @@ export function ResultsPage() {
         </>
       )}
 
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4">
         <Link to="/analytics" className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-indigo-700">
           View Analytics →
         </Link>

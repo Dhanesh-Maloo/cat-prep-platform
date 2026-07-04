@@ -69,6 +69,30 @@ export const questions = {
     },
   ],
 
+  'vr-odd-one-out': [
+    {
+      id: 'q1',
+      question: 'Five sentences are given below, numbered 1-5. Four of them form a coherent paragraph. Identify the sentence that does NOT fit.\n\n1. Coral reefs occupy less than one percent of the ocean floor but support nearly a quarter of all marine species.\n2. When water temperatures rise even slightly above normal, corals expel the algae living in their tissues.\n3. This expulsion causes the coral to turn completely white, a process known as bleaching.\n4. Migratory birds navigate using the Earth\'s magnetic field as well as visual landmarks along their route.\n5. If the stress continues for too long, bleached corals eventually starve and die.',
+      options: ['Sentence 2', 'Sentence 3', 'Sentence 4', 'Sentence 5'],
+      correctIndex: 2,
+      explanation: 'Sentences 1, 2, 3, and 5 form a single coherent paragraph on coral bleaching: reefs are ecologically vital (1), warming causes corals to expel algae (2), this turns them white (3), and prolonged stress kills them (5). Sentence 4, about migratory birds navigating by magnetic fields, is entirely unrelated to coral reefs and breaks the chain. The answer is Sentence 4, which is option index 2.',
+    },
+    {
+      id: 'q2',
+      question: 'Five sentences are given below, numbered 1-5. Four of them form a coherent paragraph. Identify the sentence that does NOT fit.\n\n1. Before the fifteenth century, books in Europe were copied by hand, a slow process that made them rare and expensive.\n2. Johannes Gutenberg introduced a movable-type printing press in the 1440s, using durable metal letters that could be rearranged for each new page.\n3. This innovation allowed identical texts to be produced quickly and in large numbers for the first time.\n4. Wider availability of printed books helped spread literacy and new ideas across Europe within a few decades.\n5. Modern e-readers now let users store thousands of digital books on a single lightweight device.',
+      options: ['Sentence 1', 'Sentence 3', 'Sentence 4', 'Sentence 5'],
+      correctIndex: 3,
+      explanation: 'Sentences 1, 2, 3, and 4 trace one continuous historical narrative: hand-copied books were scarce (1), Gutenberg\'s press changed that (2), it enabled mass production (3), and this spread literacy across Europe (4). Sentence 5 abruptly jumps forward to modern e-readers, which is a different era and topic altogether, breaking the historical flow. The answer is Sentence 5, which is option index 3.',
+    },
+    {
+      id: 'q3',
+      question: 'Five sentences are given below, numbered 1-5. Four of them form a coherent paragraph. Identify the sentence that does NOT fit.\n\n1. When a forager honeybee finds a rich source of nectar, it returns to the hive to inform the others.\n2. It performs a figure-eight movement called the waggle dance on the vertical surface of the honeycomb.\n3. The angle of the dance relative to vertical indicates the direction of the food source relative to the sun.\n4. Ant colonies rely mainly on chemical trails laid down by scouts to guide other workers to food.\n5. The duration of the waggle run tells other bees roughly how far away the source is.',
+      options: ['Sentence 2', 'Sentence 3', 'Sentence 4', 'Sentence 5'],
+      correctIndex: 2,
+      explanation: 'Sentences 1, 2, 3, and 5 together describe the honeybee waggle dance in sequence: a forager returns with news of food (1), performs the waggle dance (2), the angle encodes direction (3), and the duration encodes distance (5). Sentence 4 shifts focus to ant colonies and chemical trails, a completely different communication mechanism in a different insect, breaking the coherence. The answer is Sentence 4, which is option index 2.',
+    },
+  ],
+
   'di-tables-caselets': [
     {
       id: 'q1',
@@ -589,6 +613,30 @@ export const questions = {
       options: ['52 units', '58 units', '60 units', '64 units'],
       correctIndex: 2,
       explanation: 'January total = 40 + 60 = 100. A 20% growth means February total = 120. Since In-store stayed at 60, Online sales in February = 120 - 60 = 60 units.',
+    },
+  ],
+
+  'lr-arrangements': [
+    {
+      id: 'q1',
+      question: 'Six friends D, E, C, A, B, and F sit in a single row facing north, numbered from position 1 (leftmost) to position 6 (rightmost). The following clues apply: (i) C sits third from the left. (ii) A sits immediately to the right of C. (iii) F sits at the extreme right end. (iv) B sits immediately to the left of F. (v) E sits second from the left. Who sits at the extreme left end?',
+      options: ['D', 'E', 'C', 'B'],
+      correctIndex: 0,
+      explanation: 'C is at position 3, so A (immediately right of C) is at position 4. F is at position 6, so B (immediately left of F) is at position 5. E is fixed at position 2. The only remaining person and position is D at position 1. The final arrangement is D-E-C-A-B-F, so D sits at the extreme left end, which is option index 0.',
+    },
+    {
+      id: 'q2',
+      question: 'Five people P, Q, R, S, and T sit around a circular table, all facing the center. (i) Q sits second to the right of P. (ii) S sits immediately to the left of P. (iii) T sits immediately to the right of P. Who sits immediately to the left of Q?',
+      options: ['P', 'R', 'S', 'T'],
+      correctIndex: 3,
+      explanation: 'Fix P at a reference position. Moving clockwise (to the right) from P: T is immediately to the right of P (one seat clockwise), Q is second to the right of P (two seats clockwise), so the clockwise order so far is P, T, Q. S is immediately to the left of P, meaning one seat counter-clockwise from P, which places S right before P when moving clockwise, i.e., the last seat: P, T, Q, R, S clockwise, with R taking the only remaining seat between Q and S. Immediately to the left (counter-clockwise neighbour) of Q is T. The answer is T, which is option index 3.',
+    },
+    {
+      id: 'q3',
+      question: 'Six people J, K, L, M, N, and O sit in a row facing north, numbered from position 1 (leftmost) to position 6 (rightmost). (i) There are exactly two people seated between K and O. (ii) L sits at one of the extreme ends. (iii) J sits immediately to the right of L. (iv) M sits third from the right end. (v) N is not adjacent to J. (vi) K sits to the left of O. What is the position of N counting from the left?',
+      options: ['Third', 'Fourth', 'Fifth', 'Sixth'],
+      correctIndex: 2,
+      explanation: 'Since L is at an extreme end and J is immediately to its right, L must be at position 1 and J at position 2 (if L were at position 6, there would be no seat to its right). M is third from the right end, which is position 4. The remaining people K, N, O fill positions 3, 5, and 6. K sits to the left of O with exactly two people between them, so K and O are 3 seats apart: K at position 3 and O at position 6 fits (two people, at positions 4 and 5, sit between them). That leaves N at position 5, and N is not adjacent to J (position 2), which is satisfied. The final order is L-J-K-M-N-O, so N is fifth from the left, which is option index 2.',
     },
   ],
 

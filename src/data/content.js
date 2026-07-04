@@ -44,6 +44,25 @@ Common traps: an option may look grammatically fine but violate the logical flow
     ],
   },
 
+  'vr-odd-one-out': {
+    notes: `Overview: Odd Sentence Out questions present five numbered sentences on a common theme, of which four form a logically coherent paragraph and one disrupts that flow. CAT introduced this format in the VARC section as a TITA (Type In The Answer) variant of the older paragraph jumble, testing a candidate's ability to spot thematic and logical coherence rather than just grammar.
+
+Key Concepts: The four "correct" sentences share a single narrative or argumentative thread, often building cause and effect, chronological sequence, or a general statement followed by supporting detail. The odd sentence usually introduces a different subject, shifts scope unexpectedly, or breaks the logical chain even though it may share a surface-level keyword with the rest. Successful solvers identify the topic sentence first, then check which sentence fails to connect to its neighbours in meaning or logical progression.
+
+Exam Tips & Tricks: Read all five sentences once to identify the shared topic, then re-read looking for the sentence that feels like it belongs to a different paragraph or discussion entirely. Pay close attention to pronouns and linking words such as "this," "however," and "therefore" since they reveal which sentences depend on each other. Try mentally removing each sentence one at a time and check if the remaining four read as a single smooth paragraph; only one removal should work cleanly. Do not eliminate a sentence just because it seems like a summary or a minor tangent - it must actually break the logical or thematic chain. Practice with actual CAT previous year papers since the test setters calibrate difficulty by making the odd sentence topically close but logically disconnected.
+
+Common Question Types in CAT: These are TITA (non-MCQ, numeric entry) questions in the VARC section, where you type the sentence number that does not fit. CAT typically includes one to two such questions per slot, usually of moderate to high difficulty since there is no option elimination to fall back on. The paragraphs are drawn from varied domains including science, history, economics, and social commentary.`,
+    video: {
+      youtubeId: 'In0aLW6hKiU',
+      title: "Why You're Getting Odd Sentence Out Wrong in CAT VARC - And How to Fix It | CAT 2026",
+    },
+    resources: [
+      { title: 'Recommended Book: How to Prepare for Verbal Ability and Reading Comprehension for the CAT by Arun Sharma and Meenakshi Upadhyay - McGraw Hill, covers paragraph jumbles and sentence elimination with practice sets', url: 'https://www.amazon.in/Prepare-Verbal-Ability-Reading-Comprehension/dp/9352602269' },
+      { title: "Alternative video: Odd Sentence Out | CAT Previous Year Question Paper | BYJU'S Exam Prep", url: 'https://www.youtube.com/watch?v=sSidujPSUDU' },
+      { title: '2IIM Sentence Elimination practice questions with detailed explanations from actual CAT papers', url: 'https://iim-cat-questions-answers.2iim.com/verbal/sentence-elimination/' },
+    ],
+  },
+
   'di-tables-caselets': {
     notes: `Table and caselet-based Data Interpretation sets give you raw data (a table, or a paragraph describing relationships between quantities) and ask several questions that require combining pieces of that data. Unlike pure calculation questions, caselets often hide part of the data as prose ("twice as many as X, but 10 fewer than Y") that must first be converted into a table or set of equations before you can answer anything.
 
@@ -389,6 +408,25 @@ Common Question Types in CAT: Expect 4-5 questions per set, with at least one qu
       { title: 'Recommended Book: How to Prepare for Data Interpretation for CAT by Arun Sharma (McGraw Hill) - covers mixed/combination chart sets with practice tests', url: 'https://www.amazon.in/prepare-Data-Interpretation-Arun-Sharma/dp/B074CW19S4' },
       { title: 'Alternative video: Data Interpretation: Line and Pie Chart + Mixed and Caselets | Endeavor Careers', url: 'https://www.youtube.com/watch?v=pm80LlDsdY8' },
       { title: '2IIM free CAT multiple/combination graph questions with detailed solutions', url: 'https://iim-cat-questions-answers.2iim.com/DI_many_graphs/' },
+    ],
+  },
+
+  'lr-arrangements': {
+    notes: `Overview: Seating Arrangement puzzles ask candidates to place a set of people or objects into linear, circular, or rectangular seats based on a list of interlinked clues. This is one of the most frequently tested DILR formats in CAT because it evaluates careful clue tracking, elimination logic, and the ability to represent constraints visually under time pressure.
+
+Key Concepts: Every arrangement puzzle rests on a small set of relationship types - immediate neighbours, relative positions such as "second to the left," fixed reference points, and negative constraints like "not adjacent to." Circular and rectangular arrangements add the complication of clockwise versus counter-clockwise direction and whether people face the center or face outward, which flips left-right relationships. The key skill is converting each sentence of the puzzle into a diagram or notation immediately, since holding multiple constraints in your head leads to errors.
+
+Exam Tips & Tricks: Always start by placing the most restrictive clue first, typically one that fixes an exact position or an extreme end, since this anchors the rest of the diagram. Draw the seating diagram in one consistent orientation and mark facing direction explicitly for circular arrangements, since this is the most common source of mistakes. Process negative clues, such as "X does not sit next to Y," only after positive clues have narrowed the possibilities, since they are best used for elimination rather than placement. If a clue set seems to allow two valid arrangements, re-read every clue again before assuming the question is flawed, since CAT arrangement sets are always fully determined. Skip and return to a set if the first two minutes do not yield a clear starting point, since DILR rewards accuracy per set more than attempting every set.
+
+Common Question Types in CAT: Seating arrangement typically appears as one full set of three to four linked MCQ and TITA questions sharing the same puzzle, rather than standalone questions. CAT DILR usually includes at least one arrangement-based set per slot, ranging from straightforward linear rows to more complex circular arrangements combined with additional attributes like profession or color. Recent CAT papers have favored puzzles that combine seating with a secondary variable, requiring two linked diagrams to be solved together.`,
+    video: {
+      youtubeId: 'j9JMOiyqC9M',
+      title: 'Seating Arrangement | Circular Arrangements | LRDI | Unacademy CAT4MBA | Nupur Garg',
+    },
+    resources: [
+      { title: 'Recommended Book: How to Prepare for Logical Reasoning for CAT by Arun Sharma - McGraw Hill, dedicated chapters on linear and circular arrangements with graded exercises', url: 'https://www.amazon.in/How-Prepare-Logical-Reasoning-CAT/dp/9339205588' },
+      { title: 'Alternative video: Seating Arrangement | Logical Reasoning for CAT | DILR Preparation - Cracku', url: 'https://www.youtube.com/watch?v=Go8vwzwm3CA' },
+      { title: 'Cracku CAT DILR Arrangement Questions with video solutions from actual previous year papers', url: 'https://cracku.in/cat-lr-arrangement-questions' },
     ],
   },
 
