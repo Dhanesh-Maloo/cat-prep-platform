@@ -21,6 +21,9 @@ import { FlashcardReviewPage } from './pages/FlashcardReviewPage'
 import { AdminPage } from './pages/AdminPage'
 import { ForumThreadListPage } from './pages/ForumThreadListPage'
 import { ForumThreadPage } from './pages/ForumThreadPage'
+import { MistakeNotebookPage } from './pages/MistakeNotebookPage'
+import { PlaybookPage } from './pages/PlaybookPage'
+import { FormulaSheetPage } from './pages/FormulaSheetPage'
 
 function App() {
   return (
@@ -48,6 +51,9 @@ function App() {
             <Route path="admin" element={<AdminPage />} />
             <Route path="forum/:subtopicId" element={<ForumThreadListPage />} />
             <Route path="forum/thread/:threadId" element={<ForumThreadPage />} />
+            <Route path="mistakes" element={<MistakeNotebookPage />} />
+            <Route path="playbook" element={<PlaybookPage />} />
+            <Route path="formula-sheet" element={<FormulaSheetPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

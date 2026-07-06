@@ -17,12 +17,20 @@ export function HomePage() {
         Structured syllabus notes, curated videos, free resources, and topic-wise practice
         across VARC, DILR, and Quant{!loading && ` - ${subtopicCount} sub-topics and counting`}.
       </p>
-      <Link
-        to="/syllabus"
-        className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700"
-      >
-        Browse the Syllabus
-      </Link>
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <Link
+          to="/syllabus"
+          className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700"
+        >
+          Browse the Syllabus
+        </Link>
+        <Link
+          to="/playbook"
+          className="inline-block bg-white text-indigo-600 border border-indigo-200 px-6 py-3 rounded-lg font-medium hover:border-indigo-400"
+        >
+          99th Percentile Playbook
+        </Link>
+      </div>
 
       {loading ? (
         <p className="text-gray-400 mt-16">Loading syllabus...</p>

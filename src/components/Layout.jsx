@@ -25,6 +25,7 @@ export function Layout() {
         <>
           <Link to="/planner" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Planner</Link>
           <Link to="/bookmarks" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Bookmarks</Link>
+          <Link to="/mistakes" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Mistakes</Link>
         </>
       )}
       {isAdmin && <Link to="/admin" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Admin</Link>}

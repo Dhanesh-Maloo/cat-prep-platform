@@ -102,6 +102,7 @@ create table if not exists question_attempts (
   time_taken_seconds int,
   error_type text check (error_type in ('silly_mistake', 'conceptual_gap', 'time_pressure')),
   marked_for_review boolean not null default false,
+  note text, -- personal mistake-notebook note: why it was missed, what to do differently
   attempted_at timestamptz not null default now()
 );
 
