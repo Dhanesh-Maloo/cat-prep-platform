@@ -38,6 +38,16 @@ export async function addResource(subtopicId, { title, url }) {
   if (error) throw error
 }
 
+export async function getResourcesForSubtopic(subtopicId) {
+  const { data, error } = await supabase
+    .from('resources')
+    .select('id, title, url')
+    .eq('subtopic_id', subtopicId)
+    .order('title')
+  if (error) throw error
+  return data
+}
+
 export async function deleteResource(id) {
   const { error } = await supabase.from('resources').delete().eq('id', id)
   if (error) throw error
@@ -56,6 +66,16 @@ export async function addQuestion(question) {
     difficulty: question.difficulty || null,
   })
   if (error) throw error
+}
+
+export async function getQuestionsForSubtopic(subtopicId) {
+  const { data, error } = await supabase
+    .from('questions')
+    .select('id, question, type')
+    .eq('subtopic_id', subtopicId)
+    .order('question')
+  if (error) throw error
+  return data
 }
 
 export async function deleteQuestion(id) {

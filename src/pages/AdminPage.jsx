@@ -1,8 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '../lib/auth'
 import { useIsAdmin } from '../api/hooks/useIsAdmin'
 import { useSyllabus } from '../api/hooks/useSyllabus'
-import { addSection, addTopic, addSubtopic, upsertNotes, replaceVideo, addResource, addQuestion } from '../api/admin'
+import {
+  addSection,
+  addTopic,
+  addSubtopic,
+  upsertNotes,
+  replaceVideo,
+  addResource,
+  getResourcesForSubtopic,
+  deleteResource,
+  addQuestion,
+  getQuestionsForSubtopic,
+  deleteQuestion,
+} from '../api/admin'
 
 const DIFFICULTIES = ['Beginner', 'Intermediate', 'Advanced']
 
@@ -135,6 +147,21 @@ function SubtopicContentForm({ sections, onChanged }) {
   const [resourceTitle, setResourceTitle] = useState('')
   const [resourceUrl, setResourceUrl] = useState('')
   const [status, setStatus] = useState(null)
+  const [resources, setResources] = useState([])
+
+  useEffect(() => {
+    if (!subtopicId) {
+      setResources([])
+      return
+    }
+    let cancelled = false
+    getResourcesForSubtopic(subtopicId).then((data) => {
+      if (!cancelled) setResources(data)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [subtopicId])
 
   async function handleSave(e) {
     e.preventDefault()
@@ -142,9 +169,22 @@ function SubtopicContentForm({ sections, onChanged }) {
     try {
       if (notes) await upsertNotes(subtopicId, notes)
       if (youtubeId) await replaceVideo(subtopicId, { youtubeId, title: videoTitle })
-      if (resourceTitle && resourceUrl) await addResource(subtopicId, { title: resourceTitle, url: resourceUrl })
+      if (resourceTitle && resourceUrl) {
+        await addResource(subtopicId, { title: resourceTitle, url: resourceUrl })
+        setResources(await getResourcesForSubtopic(subtopicId))
+      }
       setStatus('Saved.')
       onChanged()
+    } catch (err) {
+      setStatus(`Error: ${err.message}`)
+    }
+  }
+
+  async function handleDeleteResource(id) {
+    if (!window.confirm('Delete this resource?')) return
+    try {
+      await deleteResource(id)
+      setResources((prev) => prev.filter((r) => r.id !== id))
     } catch (err) {
       setStatus(`Error: ${err.message}`)
     }
@@ -182,6 +222,28 @@ function SubtopicContentForm({ sections, onChanged }) {
         {status && <p className="text-sm text-indigo-600">{status}</p>}
         <button type="submit" className="btn">Save Content</button>
       </form>
+
+      {resources.length > 0 && (
+        <div className="mt-5 pt-4 border-t border-gray-100">
+          <h3 className="text-sm font-medium text-gray-700 mb-2">Existing resources for this sub-topic</h3>
+          <ul className="space-y-1">
+            {resources.map((r) => (
+              <li key={r.id} className="flex items-center justify-between gap-2 text-sm">
+                <a href={r.url} target="_blank" rel="noreferrer" className="text-indigo-600 hover:underline truncate">
+                  {r.title}
+                </a>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteResource(r.id)}
+                  className="text-red-600 hover:text-red-700 text-xs font-medium shrink-0"
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   )
 }
@@ -197,8 +259,23 @@ function QuestionForm({ sections }) {
   const [explanation, setExplanation] = useState('')
   const [difficulty, setDifficulty] = useState('Beginner')
   const [status, setStatus] = useState(null)
+  const [questions, setQuestions] = useState([])
 
   const selectedSubtopic = allSubtopics.find((st) => st.id === subtopicId)
+
+  useEffect(() => {
+    if (!subtopicId) {
+      setQuestions([])
+      return
+    }
+    let cancelled = false
+    getQuestionsForSubtopic(subtopicId).then((data) => {
+      if (!cancelled) setQuestions(data)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [subtopicId])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -220,6 +297,17 @@ function QuestionForm({ sections }) {
       setCorrectAnswer('')
       setExplanation('')
       setStatus('Question added.')
+      if (subtopicId) setQuestions(await getQuestionsForSubtopic(subtopicId))
+    } catch (err) {
+      setStatus(`Error: ${err.message}`)
+    }
+  }
+
+  async function handleDeleteQuestion(id) {
+    if (!window.confirm('Delete this question? This cannot be undone.')) return
+    try {
+      await deleteQuestion(id)
+      setQuestions((prev) => prev.filter((q) => q.id !== id))
     } catch (err) {
       setStatus(`Error: ${err.message}`)
     }
@@ -275,6 +363,29 @@ function QuestionForm({ sections }) {
         {status && <p className="text-sm text-indigo-600">{status}</p>}
         <button type="submit" className="btn">Add Question</button>
       </form>
+
+      {questions.length > 0 && (
+        <div className="mt-5 pt-4 border-t border-gray-100">
+          <h3 className="text-sm font-medium text-gray-700 mb-2">Existing questions for this sub-topic</h3>
+          <ul className="space-y-1">
+            {questions.map((q) => (
+              <li key={q.id} className="flex items-center justify-between gap-2 text-sm">
+                <span className="text-gray-700 truncate">
+                  {q.question}
+                  <span className="text-gray-400 text-xs ml-1">({q.type.toUpperCase()})</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteQuestion(q.id)}
+                  className="text-red-600 hover:text-red-700 text-xs font-medium shrink-0"
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   )
 }
