@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { TiltCard } from '../components/TiltCard'
 
 const SECTIONAL_TARGETS = [
   { section: 'VARC', range: '42-48', note: 'CAT 2025: a 99th-percentile VARC score was around 44 out of ~72 raw marks.' },
@@ -30,11 +31,11 @@ export function PlaybookPage() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {SECTIONAL_TARGETS.map((t) => (
-            <div key={t.section} className="bg-white border border-gray-200 rounded-lg p-4">
+            <TiltCard key={t.section} className="bg-white border border-gray-200 rounded-lg p-4">
               <h3 className="font-medium text-gray-800 mb-1">{t.section}</h3>
               <p className="text-2xl font-semibold text-indigo-600 mb-1">{t.range}</p>
               <p className="text-xs text-gray-500">{t.note}</p>
-            </div>
+            </TiltCard>
           ))}
         </div>
         <p className="text-xs text-gray-400 mt-3">

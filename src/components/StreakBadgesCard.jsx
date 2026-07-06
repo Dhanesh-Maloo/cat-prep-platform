@@ -11,12 +11,13 @@ export function StreakBadgesCard() {
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-5 mb-6">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-1">
         <h2 className="font-semibold text-gray-800">Your Streak</h2>
         <span className="text-2xl font-bold text-indigo-600">
-          {stats.currentStreak} <span className="text-sm font-normal text-gray-500">day{stats.currentStreak === 1 ? '' : 's'}</span>
+          🔥 {stats.currentStreak} <span className="text-sm font-normal text-gray-500">day{stats.currentStreak === 1 ? '' : 's'}</span>
         </span>
       </div>
+      <p className="text-xs text-gray-400 mb-3">Includes one free grace day if you miss a day - it won't reset your streak to zero.</p>
       <div className="flex flex-wrap gap-2">
         {earned.length === 0 ? (
           <p className="text-sm text-gray-400">No badges yet - answer a question to get started.</p>

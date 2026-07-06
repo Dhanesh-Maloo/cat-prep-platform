@@ -24,6 +24,7 @@ import { ForumThreadPage } from './pages/ForumThreadPage'
 import { MistakeNotebookPage } from './pages/MistakeNotebookPage'
 import { PlaybookPage } from './pages/PlaybookPage'
 import { FormulaSheetPage } from './pages/FormulaSheetPage'
+import { PercentilePredictorPage } from './pages/PercentilePredictorPage'
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="mistakes" element={<MistakeNotebookPage />} />
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="formula-sheet" element={<FormulaSheetPage />} />
+            <Route path="percentile-predictor" element={<PercentilePredictorPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

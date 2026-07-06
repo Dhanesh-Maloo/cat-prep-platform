@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useSyllabus } from '../api/hooks/useSyllabus'
+import { TiltCard } from '../components/TiltCard'
 
 export function HomePage() {
   const { sections, loading } = useSyllabus()
@@ -37,11 +38,11 @@ export function HomePage() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-16 text-left">
           {sections.map((section) => (
-            <div key={section.id} className="border border-gray-200 rounded-lg p-4 bg-white">
+            <TiltCard key={section.id} className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900">{section.name}</h2>
               <p className="text-sm text-gray-500">{section.fullName}</p>
               <p className="text-sm text-gray-400 mt-2">{section.topics.length} topics</p>
-            </div>
+            </TiltCard>
           ))}
         </div>
       )}

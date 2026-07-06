@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAllResources } from '../api/hooks/useAllResources'
+import { TiltCard } from '../components/TiltCard'
 
 export function ResourcesPage() {
   const { groups, loading, error } = useAllResources()
@@ -14,15 +15,25 @@ export function ResourcesPage() {
         Previous year papers, free video playlists, and formula sheets - aggregated from every sub-topic.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <Link to="/playbook" className="block bg-indigo-50 border border-indigo-100 rounded-lg p-4 hover:border-indigo-300">
-          <h2 className="font-semibold text-gray-900 mb-1">99th Percentile Playbook</h2>
-          <p className="text-sm text-gray-600">Sectional targets, DILR set-selection strategy, and time allocation used by top scorers.</p>
-        </Link>
-        <Link to="/formula-sheet" className="block bg-indigo-50 border border-indigo-100 rounded-lg p-4 hover:border-indigo-300">
-          <h2 className="font-semibold text-gray-900 mb-1">Formula &amp; Shortcuts Cheat Sheet</h2>
-          <p className="text-sm text-gray-600">Every core formula across QA, DILR, and VARC on one page.</p>
-        </Link>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <TiltCard className="rounded-lg">
+          <Link to="/playbook" className="block bg-indigo-50 border border-indigo-100 rounded-lg p-4 h-full hover:border-indigo-300">
+            <h2 className="font-semibold text-gray-900 mb-1">99th Percentile Playbook</h2>
+            <p className="text-sm text-gray-600">Sectional targets, DILR set-selection strategy, and time allocation used by top scorers.</p>
+          </Link>
+        </TiltCard>
+        <TiltCard className="rounded-lg">
+          <Link to="/formula-sheet" className="block bg-indigo-50 border border-indigo-100 rounded-lg p-4 h-full hover:border-indigo-300">
+            <h2 className="font-semibold text-gray-900 mb-1">Formula &amp; Shortcuts Cheat Sheet</h2>
+            <p className="text-sm text-gray-600">Every core formula across QA, DILR, and VARC on one page.</p>
+          </Link>
+        </TiltCard>
+        <TiltCard className="rounded-lg">
+          <Link to="/percentile-predictor" className="block bg-indigo-50 border border-indigo-100 rounded-lg p-4 h-full hover:border-indigo-300">
+            <h2 className="font-semibold text-gray-900 mb-1">Percentile Predictor</h2>
+            <p className="text-sm text-gray-600">Type in a raw score from a mock or the real exam to see an approximate percentile.</p>
+          </Link>
+        </TiltCard>
       </div>
 
       <div className="space-y-6">

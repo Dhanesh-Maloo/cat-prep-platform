@@ -4,20 +4,39 @@ const MS_PER_DAY = 24 * 60 * 60 * 1000
  * Current streak = consecutive days with at least one activity, counting
  * backwards from today. A gap yesterday-or-earlier breaks it; today not yet
  * having activity doesn't break a streak that was active through yesterday.
+ *
+ * Includes one Duolingo-style "streak freeze": a single missed day is
+ * bridged for free as long as there is activity on both sides of the gap,
+ * so one bad day doesn't wipe out an otherwise long streak. This is an
+ * approximation (a real freeze-credit system would need its own table) -
+ * it grants exactly one bridge per streak computed, not a persisted
+ * inventory of freezes.
  */
-export function computeStreak(activityDatesISO, todayISO) {
+export function computeStreak(activityDatesISO, todayISO, { freezesAvailable = 1 } = {}) {
   const days = new Set(activityDatesISO.map((d) => d.slice(0, 10)))
   const today = new Date(todayISO)
 
   let streak = 0
+  let freezesLeft = freezesAvailable
   let cursor = new Date(today)
   if (!days.has(todayISO.slice(0, 10))) {
     cursor = new Date(today.getTime() - MS_PER_DAY)
   }
 
-  while (days.has(cursor.toISOString().slice(0, 10))) {
-    streak += 1
-    cursor = new Date(cursor.getTime() - MS_PER_DAY)
+  while (true) {
+    const key = cursor.toISOString().slice(0, 10)
+    if (days.has(key)) {
+      streak += 1
+      cursor = new Date(cursor.getTime() - MS_PER_DAY)
+      continue
+    }
+    const dayBefore = new Date(cursor.getTime() - MS_PER_DAY)
+    if (freezesLeft > 0 && days.has(dayBefore.toISOString().slice(0, 10))) {
+      freezesLeft -= 1
+      cursor = dayBefore
+      continue
+    }
+    break
   }
 
   return streak
