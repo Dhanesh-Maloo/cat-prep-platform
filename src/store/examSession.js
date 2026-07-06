@@ -187,7 +187,7 @@ export const useExamSession = create((set, get) => ({
   },
 
   submitTest() {
-    const { test, questions, answers } = get()
+    const { test, questions } = get()
     const answersWithFlush = get()._flushTimeForCurrentQuestion()
     const result = calculateScore(questions, answersWithFlush)
     set({ status: 'submitted', answers: answersWithFlush, result })

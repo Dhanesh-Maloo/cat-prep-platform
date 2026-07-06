@@ -48,8 +48,8 @@ export function MockTestRunnerPage() {
   }, [status, tickCurrentSection])
 
   useEffect(() => {
-    if (status === 'submitted') navigate(`/results/${mockTestId}`)
-  }, [status, mockTestId, navigate])
+    if (status === 'submitted' && test?.id === mockTestId) navigate(`/results/${mockTestId}`)
+  }, [status, test, mockTestId, navigate])
 
   if (mockTestError) return <p className="text-red-500">Couldn't load this test. Please try again.</p>
   if (!test) {
