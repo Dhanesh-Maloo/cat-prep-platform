@@ -12,9 +12,11 @@ import {
   getResourcesForSubtopic,
   deleteResource,
   addQuestion,
+  addQuestions,
   getQuestionsForSubtopic,
   deleteQuestion,
 } from '../api/admin'
+import { parseQuestionsText } from '../lib/questionFileParser'
 
 const DIFFICULTIES = ['Beginner', 'Intermediate', 'Advanced']
 
@@ -33,6 +35,7 @@ export function AdminPage() {
       <SectionTopicSubtopicForm sections={sections} onChanged={refresh} />
       <SubtopicContentForm sections={sections} onChanged={refresh} />
       <QuestionForm sections={sections} />
+      <BulkQuestionUploadForm sections={sections} />
     </div>
   )
 }
@@ -386,6 +389,146 @@ function QuestionForm({ sections }) {
           </ul>
         </div>
       )}
+    </section>
+  )
+}
+
+const FORMAT_EXAMPLE = `Q: What is 1/8 as a percentage?
+A) 8%
+B) 12.5%
+C) 18%
+D) 80%
+ANSWER: B
+EXPLANATION: 1/8 = 0.125 = 12.5%.
+DIFFICULTY: Beginner
+
+Q: What is the remainder when 17 is divided by 5?
+TYPE: TITA
+ANSWER: 2
+EXPLANATION: 17 = 3*5 + 2, remainder 2.`
+
+function BulkQuestionUploadForm({ sections }) {
+  const allSubtopics = sections.flatMap((s) => s.topics.flatMap((t) => t.subtopics.map((st) => ({ ...st, sectionName: s.name, path: `${s.name} / ${t.name} / ${st.name}` }))))
+  const [subtopicId, setSubtopicId] = useState('')
+  const [fileName, setFileName] = useState('')
+  const [parsed, setParsed] = useState(null)
+  const [parsing, setParsing] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [status, setStatus] = useState(null)
+  const [showFormat, setShowFormat] = useState(false)
+
+  const selectedSubtopic = allSubtopics.find((st) => st.id === subtopicId)
+
+  async function handleFile(e) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setFileName(file.name)
+    setParsed(null)
+    setStatus(null)
+    setParsing(true)
+    try {
+      let text
+      if (file.name.toLowerCase().endsWith('.pdf')) {
+        const { extractTextFromPdf } = await import('../lib/pdfTextExtractor')
+        text = await extractTextFromPdf(file)
+      } else {
+        text = await file.text()
+      }
+      setParsed(parseQuestionsText(text))
+    } catch (err) {
+      setStatus(`Error reading file: ${err.message}`)
+    }
+    setParsing(false)
+  }
+
+  async function handleConfirm() {
+    if (!parsed?.questions.length || !subtopicId) return
+    setSaving(true)
+    setStatus(null)
+    try {
+      await addQuestions(
+        parsed.questions.map((q) => ({ ...q, subtopicId, section: selectedSubtopic?.sectionName }))
+      )
+      setStatus(`Added ${parsed.questions.length} question${parsed.questions.length === 1 ? '' : 's'}.`)
+      setParsed(null)
+      setFileName('')
+    } catch (err) {
+      setStatus(`Error: ${err.message}`)
+    }
+    setSaving(false)
+  }
+
+  return (
+    <section className="bg-white border border-gray-200 rounded-lg p-5">
+      <h2 className="font-semibold text-gray-800 mb-1">Bulk Upload Questions</h2>
+      <p className="text-sm text-gray-500 mb-4">
+        Upload a .txt or .pdf file of questions in the format below - they'll be parsed and shown for review before
+        anything is saved.{' '}
+        <button type="button" onClick={() => setShowFormat((v) => !v)} className="text-indigo-600 hover:underline">
+          {showFormat ? 'Hide format' : 'Show format'}
+        </button>
+      </p>
+
+      {showFormat && (
+        <pre className="text-xs bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4 overflow-x-auto whitespace-pre-wrap">
+{FORMAT_EXAMPLE}
+        </pre>
+      )}
+
+      <div className="space-y-3">
+        <Field label="Sub-topic">
+          <select value={subtopicId} onChange={(e) => setSubtopicId(e.target.value)} className="input w-full" required>
+            <option value="">Select...</option>
+            {allSubtopics.map((st) => <option key={st.id} value={st.id}>{st.path}</option>)}
+          </select>
+        </Field>
+        <Field label="Question file (.txt or .pdf)">
+          <input type="file" accept=".txt,.pdf" onChange={handleFile} className="input w-full" />
+        </Field>
+
+        {parsing && <p className="text-sm text-gray-500">Parsing {fileName}...</p>}
+
+        {parsed && (
+          <div className="border border-gray-200 rounded-lg p-3 space-y-2">
+            <p className="text-sm text-gray-700">
+              <span className="font-medium text-green-700">{parsed.questions.length} question{parsed.questions.length === 1 ? '' : 's'} parsed successfully</span>
+              {parsed.errors.length > 0 && (
+                <span className="text-red-600"> - {parsed.errors.length} block{parsed.errors.length === 1 ? '' : 's'} had errors and will be skipped</span>
+              )}
+            </p>
+
+            {parsed.errors.length > 0 && (
+              <ul className="text-xs text-red-600 space-y-1">
+                {parsed.errors.map((e, i) => (
+                  <li key={i}>Block {e.position}: {e.message} ({e.preview}...)</li>
+                ))}
+              </ul>
+            )}
+
+            {parsed.questions.length > 0 && (
+              <ul className="text-sm text-gray-700 space-y-1 max-h-56 overflow-y-auto">
+                {parsed.questions.map((q, i) => (
+                  <li key={i} className="truncate">
+                    {i + 1}. {q.question} <span className="text-gray-400 text-xs">({q.type.toUpperCase()})</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <button
+              type="button"
+              onClick={handleConfirm}
+              disabled={!subtopicId || parsed.questions.length === 0 || saving}
+              className="btn disabled:opacity-50"
+            >
+              {saving ? 'Adding...' : `Add ${parsed.questions.length} Question${parsed.questions.length === 1 ? '' : 's'}`}
+            </button>
+            {!subtopicId && <p className="text-xs text-amber-600">Select a sub-topic above before confirming.</p>}
+          </div>
+        )}
+
+        {status && <p className="text-sm text-indigo-600">{status}</p>}
+      </div>
     </section>
   )
 }

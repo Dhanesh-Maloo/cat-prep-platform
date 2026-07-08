@@ -53,8 +53,8 @@ export async function deleteResource(id) {
   if (error) throw error
 }
 
-export async function addQuestion(question) {
-  const { error } = await supabase.from('questions').insert({
+function questionToRow(question) {
+  return {
     subtopic_id: question.subtopicId || null,
     section: question.section || null,
     type: question.type,
@@ -64,7 +64,17 @@ export async function addQuestion(question) {
     correct_answer: question.type === 'tita' ? question.correctAnswer : null,
     explanation: question.explanation,
     difficulty: question.difficulty || null,
-  })
+  }
+}
+
+export async function addQuestion(question) {
+  const { error } = await supabase.from('questions').insert(questionToRow(question))
+  if (error) throw error
+}
+
+/** Bulk insert, e.g. from a parsed question-file upload. Single round trip. */
+export async function addQuestions(questions) {
+  const { error } = await supabase.from('questions').insert(questions.map(questionToRow))
   if (error) throw error
 }
 
