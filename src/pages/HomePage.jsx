@@ -11,10 +11,10 @@ export function HomePage() {
 
   return (
     <div className="text-center py-12">
-      <h1 className="text-4xl font-semibold text-gray-900 mb-4">
+      <h1 className="text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Prepare for CAT, all in one place
       </h1>
-      <p className="text-gray-600 max-w-xl mx-auto mb-8">
+      <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8">
         Structured syllabus notes, curated videos, free resources, and topic-wise practice
         across VARC, DILR, and Quant{!loading && ` - ${subtopicCount} sub-topics and counting`}.
       </p>
@@ -27,21 +27,21 @@ export function HomePage() {
         </Link>
         <Link
           to="/playbook"
-          className="inline-block bg-white text-indigo-600 border border-indigo-200 px-6 py-3 rounded-lg font-medium hover:border-indigo-400"
+          className="inline-block bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 px-6 py-3 rounded-lg font-medium hover:border-indigo-400 dark:hover:border-indigo-500"
         >
           99th Percentile Playbook
         </Link>
       </div>
 
       {loading ? (
-        <p className="text-gray-400 mt-16">Loading syllabus...</p>
+        <p className="text-gray-400 dark:text-gray-500 mt-16">Loading syllabus...</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-16 text-left">
           {sections.map((section) => (
-            <TiltCard key={section.id} className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
-              <h2 className="text-lg font-semibold text-gray-900">{section.name}</h2>
-              <p className="text-sm text-gray-500">{section.fullName}</p>
-              <p className="text-sm text-gray-400 mt-2">{section.topics.length} topics</p>
+            <TiltCard key={section.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 shadow-sm">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{section.name}</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{section.fullName}</p>
+              <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">{section.topics.length} topics</p>
             </TiltCard>
           ))}
         </div>

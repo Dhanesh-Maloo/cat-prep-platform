@@ -7,9 +7,9 @@ function statusStyle(state) {
     case 'marked':
       return 'bg-purple-600 text-white'
     case 'visited':
-      return 'bg-red-100 text-red-700 border border-red-300'
+      return 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 border border-red-300 dark:border-red-700'
     default:
-      return 'bg-gray-100 text-gray-600 border border-gray-300'
+      return 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 border border-gray-300 dark:border-gray-600'
   }
 }
 
@@ -42,10 +42,10 @@ export function QuestionNavPanel({ questionIds, questionsById, answers, currentQ
           </button>
         ))}
       </div>
-      <ul className="space-y-1.5 text-xs text-gray-500">
+      <ul className="space-y-1.5 text-xs text-gray-500 dark:text-gray-400">
         <li><span className="inline-block w-3 h-3 rounded-sm bg-green-600 mr-2 align-middle" />Answered</li>
-        <li><span className="inline-block w-3 h-3 rounded-sm bg-red-100 border border-red-300 mr-2 align-middle" />Visited, not answered</li>
-        <li><span className="inline-block w-3 h-3 rounded-sm bg-gray-100 border border-gray-300 mr-2 align-middle" />Not visited</li>
+        <li><span className="inline-block w-3 h-3 rounded-sm bg-red-100 dark:bg-red-900/40 border border-red-300 dark:border-red-700 mr-2 align-middle" />Visited, not answered</li>
+        <li><span className="inline-block w-3 h-3 rounded-sm bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 mr-2 align-middle" />Not visited</li>
         <li><span className="inline-block w-3 h-3 rounded-sm bg-purple-600 mr-2 align-middle" />Marked for review</li>
       </ul>
     </div>

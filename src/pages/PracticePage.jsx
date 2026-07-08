@@ -41,10 +41,10 @@ export function PracticePage() {
     })
   }
 
-  if (loading) return <p className="text-gray-500">Loading...</p>
-  if (error) return <p className="text-red-500">Couldn't load practice questions. Please try again.</p>
+  if (loading) return <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+  if (error) return <p className="text-red-500 dark:text-red-400">Couldn't load practice questions. Please try again.</p>
   if (questions.length === 0) {
-    return <p className="text-gray-500">No practice questions available for this sub-topic yet.</p>
+    return <p className="text-gray-500 dark:text-gray-400">No practice questions available for this sub-topic yet.</p>
   }
 
   const question = questions[index]
@@ -76,16 +76,16 @@ export function PracticePage() {
   if (index >= questions.length) {
     return (
       <div className="text-center py-16">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">Practice complete</h1>
-        <p className="text-gray-600 mb-6">
+        <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Practice complete</h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
           You scored {score} / {questions.length} on {subtopicName}.
         </p>
         {!user && (
-          <p className="text-xs text-amber-600 mb-4">
+          <p className="text-xs text-amber-600 dark:text-amber-400 mb-4">
             <Link to="/login" className="underline">Log in</Link> to save your practice history and see it in Analytics.
           </p>
         )}
-        <Link to={`/subtopic/${subtopicId}`} className="text-indigo-600 hover:underline">
+        <Link to={`/subtopic/${subtopicId}`} className="text-indigo-600 dark:text-indigo-400 hover:underline">
           ← Back to notes
         </Link>
       </div>
@@ -94,20 +94,20 @@ export function PracticePage() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
-        <Link to={`/subtopic/${subtopicId}`} className="hover:text-indigo-600">← {subtopicName}</Link>
+      <div className="flex items-center justify-between mb-4 text-sm text-gray-500 dark:text-gray-400">
+        <Link to={`/subtopic/${subtopicId}`} className="hover:text-indigo-600 dark:hover:text-indigo-400">← {subtopicName}</Link>
         <span>Question {index + 1} of {questions.length}</span>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <p className="text-gray-900 font-medium mb-4">{question.question}</p>
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+        <p className="text-gray-900 dark:text-gray-100 font-medium mb-4">{question.question}</p>
         <div className="space-y-2">
           {question.options.map((option, i) => {
             const isCorrect = i === question.correctIndex
             const isSelected = i === selected
-            let style = 'border-gray-200 hover:border-indigo-300'
-            if (isAnswered && isCorrect) style = 'border-green-500 bg-green-50'
-            else if (isAnswered && isSelected && !isCorrect) style = 'border-red-500 bg-red-50'
+            let style = 'border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600'
+            if (isAnswered && isCorrect) style = 'border-green-500 dark:border-green-400 bg-green-50 dark:bg-green-950'
+            else if (isAnswered && isSelected && !isCorrect) style = 'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-950'
 
             return (
               <button
@@ -115,7 +115,7 @@ export function PracticePage() {
                 type="button"
                 onClick={() => handleSelect(i)}
                 disabled={isAnswered}
-                className={`w-full text-left border rounded-lg px-4 py-2.5 text-gray-700 transition-colors ${style}`}
+                className={`w-full text-left border rounded-lg px-4 py-2.5 text-gray-700 dark:text-gray-300 transition-colors ${style}`}
               >
                 {option}
               </button>
@@ -124,8 +124,8 @@ export function PracticePage() {
         </div>
 
         {isAnswered && (
-          <div className="mt-4 bg-indigo-50 border border-indigo-100 rounded-lg p-4 text-sm text-gray-700">
-            <p className="font-medium text-indigo-700 mb-1">
+          <div className="mt-4 bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-800 rounded-lg p-4 text-sm text-gray-700 dark:text-gray-300">
+            <p className="font-medium text-indigo-700 dark:text-indigo-300 mb-1">
               {selected === question.correctIndex ? 'Correct!' : 'Not quite.'}
             </p>
             {question.explanation}
@@ -147,8 +147,8 @@ export function PracticePage() {
                 onClick={() => handleBookmarkToggle(question.id)}
                 className={`text-sm px-3 py-2 rounded-lg border ${
                   bookmarkedIds.has(question.id)
-                    ? 'bg-amber-100 text-amber-700 border-amber-300'
-                    : 'bg-white text-gray-500 border-gray-300 hover:border-amber-400'
+                    ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700'
+                    : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:border-amber-400 dark:hover:border-amber-600'
                 }`}
               >
                 {bookmarkedIds.has(question.id) ? '★ Bookmarked' : '☆ Bookmark for review'}

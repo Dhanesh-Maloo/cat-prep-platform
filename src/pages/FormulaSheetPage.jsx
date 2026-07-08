@@ -74,21 +74,21 @@ const GROUPS = [
 export function FormulaSheetPage() {
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-2">Formula &amp; Shortcuts Cheat Sheet</h1>
-      <p className="text-gray-500 text-sm mb-6">
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Formula &amp; Shortcuts Cheat Sheet</h1>
+      <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
         A condensed, exam-day reference across QA, DILR, and VARC - the things you should be able to recall instantly
         without re-deriving them. For worked examples and practice, open the relevant sub-topic from the{' '}
-        <a href="/syllabus" className="text-indigo-600 hover:underline">Syllabus</a>.
+        <a href="/syllabus" className="text-indigo-600 dark:text-indigo-400 hover:underline">Syllabus</a>.
       </p>
       <div className="space-y-6">
         {GROUPS.map((group) => (
-          <section key={group.title} className="bg-white border border-gray-200 rounded-lg p-5">
-            <h2 className="font-semibold text-gray-800 mb-3">{group.title}</h2>
+          <section key={group.title} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+            <h2 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">{group.title}</h2>
             <dl className="space-y-3">
               {group.items.map((item) => (
                 <div key={item.name}>
-                  <dt className="text-sm font-medium text-gray-800">{item.name}</dt>
-                  <dd className="text-sm text-gray-600">{item.formula}</dd>
+                  <dt className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.name}</dt>
+                  <dd className="text-sm text-gray-600 dark:text-gray-400">{item.formula}</dd>
                 </div>
               ))}
             </dl>

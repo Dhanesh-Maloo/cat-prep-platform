@@ -21,8 +21,8 @@ function AnalyticsContent() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900 mb-1">Analytics</h1>
-      <p className="text-gray-500 text-sm mb-6">
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">Analytics</h1>
+      <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
         {!user && 'Built from your practice and mock test attempts. Log in and take a mock test to see your real data - showing sample history for now.'}
         {user && loading && 'Loading your attempts...'}
         {user && !loading && usingRealData && 'Reflecting your real mock test attempts.'}

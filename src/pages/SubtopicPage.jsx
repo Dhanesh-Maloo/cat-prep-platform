@@ -29,9 +29,9 @@ export function SubtopicPage() {
     setBookmarked(next)
   }
 
-  if (loading) return <p className="text-gray-500">Loading...</p>
-  if (error) return <p className="text-red-500">Couldn't load this sub-topic. Please try again.</p>
-  if (!match) return <p className="text-gray-500">Sub-topic not found.</p>
+  if (loading) return <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+  if (error) return <p className="text-red-500 dark:text-red-400">Couldn't load this sub-topic. Please try again.</p>
+  if (!match) return <p className="text-gray-500 dark:text-gray-400">Sub-topic not found.</p>
 
   const { section, topic, subtopic } = match
   const isVideoLink = (url) => url.includes('youtube.com') || url.includes('youtu.be')
@@ -47,13 +47,13 @@ export function SubtopicPage() {
 
   return (
     <div>
-      <p className="text-sm text-gray-400 mb-2">
-        <Link to="/syllabus" className="hover:text-indigo-600">{section.name}</Link>
+      <p className="text-sm text-gray-400 dark:text-gray-500 mb-2">
+        <Link to="/syllabus" className="hover:text-indigo-600 dark:hover:text-indigo-400">{section.name}</Link>
         {' / '}
         {topic.name}
       </p>
       <div className="flex items-center gap-3 mb-6">
-        <h1 className="text-2xl font-semibold text-gray-900">{subtopic.name}</h1>
+        <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">{subtopic.name}</h1>
         <DifficultyBadge level={subtopic.difficulty} />
         {user && (
           <button
@@ -61,8 +61,8 @@ export function SubtopicPage() {
             onClick={handleBookmarkToggle}
             className={`text-sm px-2.5 py-1 rounded-full border ${
               bookmarked
-                ? 'bg-amber-100 text-amber-700 border-amber-300'
-                : 'bg-white text-gray-500 border-gray-300 hover:border-amber-400'
+                ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700'
+                : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:border-amber-400 dark:hover:border-amber-600'
             }`}
           >
             {bookmarked ? '★ Bookmarked' : '☆ Bookmark'}
@@ -71,22 +71,22 @@ export function SubtopicPage() {
       </div>
 
       {!content ? (
-        <div className="bg-white border border-gray-200 rounded-lg p-8 text-center text-gray-500">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
           Notes for this sub-topic are coming soon.
         </div>
       ) : (
         <div className="space-y-8">
           <section>
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">Concept Notes</h2>
-            <div className="bg-white border border-gray-200 rounded-lg p-5 text-gray-700 leading-relaxed whitespace-pre-line">
+            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Concept Notes</h2>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
               {content.notes}
             </div>
           </section>
 
           {content.video && (
             <section>
-              <h2 className="text-lg font-semibold text-gray-800 mb-2">Video Explainer</h2>
-              <div className="aspect-video max-w-2xl rounded-lg overflow-hidden border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Video Explainer</h2>
+              <div className="aspect-video max-w-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                 <iframe
                   className="w-full h-full"
                   src={`https://www.youtube.com/embed/${content.video.youtubeId}`}
@@ -94,13 +94,13 @@ export function SubtopicPage() {
                   allowFullScreen
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-1">{content.video.title}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{content.video.title}</p>
             </section>
           )}
 
           {videoLinks.length > 0 && (
             <section>
-              <h2 className="text-lg font-semibold text-gray-800 mb-2">More Video Explainers</h2>
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">More Video Explainers</h2>
               <ul className="space-y-1">
                 {videoLinks.map((r) => (
                   <li key={r.url}>
@@ -108,7 +108,7 @@ export function SubtopicPage() {
                       href={r.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-indigo-600 hover:underline text-sm"
+                      className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
                     >
                       {r.title}
                     </a>
@@ -120,7 +120,7 @@ export function SubtopicPage() {
 
           {bookLinks.length > 0 && (
             <section>
-              <h2 className="text-lg font-semibold text-gray-800 mb-2">Recommended Books & Reading</h2>
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Recommended Books & Reading</h2>
               <ul className="space-y-1">
                 {bookLinks.map((r) => (
                   <li key={r.url}>
@@ -128,7 +128,7 @@ export function SubtopicPage() {
                       href={r.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-indigo-600 hover:underline text-sm"
+                      className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
                     >
                       {r.title.replace('Recommended Book: ', '')}
                     </a>
@@ -139,7 +139,7 @@ export function SubtopicPage() {
           )}
 
           <section>
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">Free Resources</h2>
+            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Free Resources</h2>
             <ul className="space-y-1">
               {otherResources.map((r) => (
                 <li key={r.url}>
@@ -147,7 +147,7 @@ export function SubtopicPage() {
                     href={r.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-indigo-600 hover:underline text-sm"
+                    className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
                   >
                     {r.title}
                   </a>
@@ -166,7 +166,7 @@ export function SubtopicPage() {
           )}
 
           <div className="text-sm">
-            <Link to={`/forum/${subtopicId}`} className="text-indigo-600 hover:underline">
+            <Link to={`/forum/${subtopicId}`} className="text-indigo-600 dark:text-indigo-400 hover:underline">
               Discuss this topic in the forum →
             </Link>
           </div>
@@ -174,16 +174,16 @@ export function SubtopicPage() {
       )}
 
       {(prevSubtopic || nextSubtopic) && (
-        <div className="flex items-center justify-between mt-10 pt-6 border-t border-gray-200">
+        <div className="flex items-center justify-between mt-10 pt-6 border-t border-gray-200 dark:border-gray-700">
           {prevSubtopic ? (
-            <Link to={`/subtopic/${prevSubtopic.id}`} className="text-sm text-gray-600 hover:text-indigo-600 max-w-[45%]">
-              <span className="block text-xs text-gray-400">← Previous</span>
+            <Link to={`/subtopic/${prevSubtopic.id}`} className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 max-w-[45%]">
+              <span className="block text-xs text-gray-400 dark:text-gray-500">← Previous</span>
               {prevSubtopic.name}
             </Link>
           ) : <span />}
           {nextSubtopic ? (
-            <Link to={`/subtopic/${nextSubtopic.id}`} className="text-sm text-gray-600 hover:text-indigo-600 text-right max-w-[45%]">
-              <span className="block text-xs text-gray-400">Next →</span>
+            <Link to={`/subtopic/${nextSubtopic.id}`} className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 text-right max-w-[45%]">
+              <span className="block text-xs text-gray-400 dark:text-gray-500">Next →</span>
               {nextSubtopic.name}
             </Link>
           ) : <span />}

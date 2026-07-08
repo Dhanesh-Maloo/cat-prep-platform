@@ -5,9 +5,9 @@ export function SectionComparisonChart() {
   const { sectionComparison } = useAnalyticsData()
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-5">
-      <h3 className="font-semibold text-gray-800 mb-1">Section-wise Comparison</h3>
-      <p className="text-xs text-gray-500 mb-4">Average score per section across all mock attempts</p>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Section-wise Comparison</h3>
+      <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">Average score per section across all mock attempts</p>
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={sectionComparison} margin={{ left: -10 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />

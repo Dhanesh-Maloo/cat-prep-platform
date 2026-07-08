@@ -8,9 +8,9 @@ export function ErrorClassificationChart() {
   const total = errorBreakdown.reduce((sum, e) => sum + e.count, 0)
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-5">
-      <h3 className="font-semibold text-gray-800 mb-1">Error Classification</h3>
-      <p className="text-xs text-gray-500 mb-4">
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Error Classification</h3>
+      <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
         {total > 0 ? `${total} tagged misses across all attempts` : 'No tagged misses yet'}
       </p>
       <ResponsiveContainer width="100%" height={220}>

@@ -6,9 +6,9 @@ export function TimePerQuestionChart() {
   const overTime = topicStats.filter((t) => t.overTimeCount > 0)
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-5">
-      <h3 className="font-semibold text-gray-800 mb-1">Time-per-Question vs. Recommended</h3>
-      <p className="text-xs text-gray-500 mb-4">Seconds spent on average vs. the recommended pace per topic</p>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Time-per-Question vs. Recommended</h3>
+      <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">Seconds spent on average vs. the recommended pace per topic</p>
       <ResponsiveContainer width="100%" height={260}>
         <BarChart data={topicStats} margin={{ left: -10 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -21,7 +21,7 @@ export function TimePerQuestionChart() {
         </BarChart>
       </ResponsiveContainer>
       {overTime.length > 0 && (
-        <div className="mt-3 text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-2">
+        <div className="mt-3 text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950 rounded-lg px-3 py-2">
           Spending 2x+ the recommended time on: {overTime.map((t) => t.topic).join(', ')}
         </div>
       )}

@@ -54,31 +54,31 @@ export function SettingsPage() {
   }
 
   if (!user) {
-    return <p className="text-gray-500">You need to be logged in to view settings.</p>
+    return <p className="text-gray-500 dark:text-gray-400">You need to be logged in to view settings.</p>
   }
-  if (loading) return <p className="text-gray-500">Loading...</p>
+  if (loading) return <p className="text-gray-500 dark:text-gray-400">Loading...</p>
 
   return (
     <div className="max-w-md mx-auto">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-1">Settings</h1>
-      <p className="text-sm text-gray-500 mb-6">{user.email}</p>
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">Settings</h1>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{user.email}</p>
 
-      <form onSubmit={handleSubmit} className="space-y-4 bg-white border border-gray-200 rounded-lg p-5">
+      <form onSubmit={handleSubmit} className="space-y-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Target CAT exam date</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Target CAT exam date</label>
           <input
             type="date"
             value={targetExamDate}
             onChange={(e) => setTargetExamDate(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="input w-full"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Current level</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current level</label>
           <select
             value={currentLevel}
             onChange={(e) => setCurrentLevel(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="input w-full"
           >
             <option value="">Not set</option>
             {LEVELS.map((level) => (
@@ -86,8 +86,8 @@ export function SettingsPage() {
             ))}
           </select>
         </div>
-        {error && <p className="text-sm text-red-600">{error}</p>}
-        {saved && <p className="text-sm text-green-600">Saved.</p>}
+        {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+        {saved && <p className="text-sm text-green-600 dark:text-green-400">Saved.</p>}
         <button
           type="submit"
           disabled={saving}

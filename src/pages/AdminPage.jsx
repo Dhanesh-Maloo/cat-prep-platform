@@ -25,13 +25,13 @@ export function AdminPage() {
   const { isAdmin, loading: adminLoading } = useIsAdmin(user?.id)
   const { sections, loading: syllabusLoading, refresh } = useSyllabus()
 
-  if (!user) return <p className="text-gray-500">Log in to access the admin panel.</p>
-  if (adminLoading || syllabusLoading) return <p className="text-gray-500">Loading...</p>
-  if (!isAdmin) return <p className="text-red-500">You don't have admin access.</p>
+  if (!user) return <p className="text-gray-500 dark:text-gray-400">Log in to access the admin panel.</p>
+  if (adminLoading || syllabusLoading) return <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+  if (!isAdmin) return <p className="text-red-500 dark:text-red-400">You don't have admin access.</p>
 
   return (
     <div className="max-w-3xl mx-auto space-y-10">
-      <h1 className="text-2xl font-semibold text-gray-900">Admin Panel</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Admin Panel</h1>
       <SectionTopicSubtopicForm sections={sections} onChanged={refresh} />
       <SubtopicContentForm sections={sections} onChanged={refresh} />
       <QuestionForm sections={sections} />
@@ -93,11 +93,11 @@ function SectionTopicSubtopicForm({ sections, onChanged }) {
   }
 
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5">
-      <h2 className="font-semibold text-gray-800 mb-4">Syllabus Structure</h2>
-      {status && <p className="text-sm mb-3 text-indigo-600">{status}</p>}
+    <section className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h2 className="font-semibold text-gray-800 dark:text-gray-200 mb-4">Syllabus Structure</h2>
+      {status && <p className="text-sm mb-3 text-indigo-600 dark:text-indigo-400">{status}</p>}
 
-      <form onSubmit={handleAddSection} className="flex flex-wrap items-end gap-2 mb-4 pb-4 border-b border-gray-100">
+      <form onSubmit={handleAddSection} className="flex flex-wrap items-end gap-2 mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
         <Field label="New section name">
           <input value={sectionName} onChange={(e) => setSectionName(e.target.value)} className="input" required />
         </Field>
@@ -107,7 +107,7 @@ function SectionTopicSubtopicForm({ sections, onChanged }) {
         <button type="submit" className="btn">Add Section</button>
       </form>
 
-      <form onSubmit={handleAddTopic} className="flex flex-wrap items-end gap-2 mb-4 pb-4 border-b border-gray-100">
+      <form onSubmit={handleAddTopic} className="flex flex-wrap items-end gap-2 mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
         <Field label="Section">
           <select value={topicSectionId} onChange={(e) => setTopicSectionId(e.target.value)} className="input" required>
             <option value="">Select...</option>
@@ -194,8 +194,8 @@ function SubtopicContentForm({ sections, onChanged }) {
   }
 
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5">
-      <h2 className="font-semibold text-gray-800 mb-4">Sub-topic Content</h2>
+    <section className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h2 className="font-semibold text-gray-800 dark:text-gray-200 mb-4">Sub-topic Content</h2>
       <form onSubmit={handleSave} className="space-y-3">
         <Field label="Sub-topic">
           <select value={subtopicId} onChange={(e) => setSubtopicId(e.target.value)} className="input w-full" required>
@@ -222,23 +222,23 @@ function SubtopicContentForm({ sections, onChanged }) {
             <input value={resourceUrl} onChange={(e) => setResourceUrl(e.target.value)} className="input w-full" />
           </Field>
         </div>
-        {status && <p className="text-sm text-indigo-600">{status}</p>}
+        {status && <p className="text-sm text-indigo-600 dark:text-indigo-400">{status}</p>}
         <button type="submit" className="btn">Save Content</button>
       </form>
 
       {resources.length > 0 && (
-        <div className="mt-5 pt-4 border-t border-gray-100">
-          <h3 className="text-sm font-medium text-gray-700 mb-2">Existing resources for this sub-topic</h3>
+        <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Existing resources for this sub-topic</h3>
           <ul className="space-y-1">
             {resources.map((r) => (
               <li key={r.id} className="flex items-center justify-between gap-2 text-sm">
-                <a href={r.url} target="_blank" rel="noreferrer" className="text-indigo-600 hover:underline truncate">
+                <a href={r.url} target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline truncate">
                   {r.title}
                 </a>
                 <button
                   type="button"
                   onClick={() => handleDeleteResource(r.id)}
-                  className="text-red-600 hover:text-red-700 text-xs font-medium shrink-0"
+                  className="text-red-600 dark:text-red-400 hover:text-red-700 text-xs font-medium shrink-0"
                 >
                   Delete
                 </button>
@@ -317,8 +317,8 @@ function QuestionForm({ sections }) {
   }
 
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5">
-      <h2 className="font-semibold text-gray-800 mb-4">Add Practice Question</h2>
+    <section className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h2 className="font-semibold text-gray-800 dark:text-gray-200 mb-4">Add Practice Question</h2>
       <form onSubmit={handleSubmit} className="space-y-3">
         <Field label="Sub-topic">
           <select value={subtopicId} onChange={(e) => setSubtopicId(e.target.value)} className="input w-full" required>
@@ -363,24 +363,24 @@ function QuestionForm({ sections }) {
             {DIFFICULTIES.map((d) => <option key={d} value={d}>{d}</option>)}
           </select>
         </Field>
-        {status && <p className="text-sm text-indigo-600">{status}</p>}
+        {status && <p className="text-sm text-indigo-600 dark:text-indigo-400">{status}</p>}
         <button type="submit" className="btn">Add Question</button>
       </form>
 
       {questions.length > 0 && (
-        <div className="mt-5 pt-4 border-t border-gray-100">
-          <h3 className="text-sm font-medium text-gray-700 mb-2">Existing questions for this sub-topic</h3>
+        <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Existing questions for this sub-topic</h3>
           <ul className="space-y-1">
             {questions.map((q) => (
               <li key={q.id} className="flex items-center justify-between gap-2 text-sm">
-                <span className="text-gray-700 truncate">
+                <span className="text-gray-700 dark:text-gray-300 truncate">
                   {q.question}
-                  <span className="text-gray-400 text-xs ml-1">({q.type.toUpperCase()})</span>
+                  <span className="text-gray-400 dark:text-gray-500 text-xs ml-1">({q.type.toUpperCase()})</span>
                 </span>
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(q.id)}
-                  className="text-red-600 hover:text-red-700 text-xs font-medium shrink-0"
+                  className="text-red-600 dark:text-red-400 hover:text-red-700 text-xs font-medium shrink-0"
                 >
                   Delete
                 </button>
@@ -459,18 +459,18 @@ function BulkQuestionUploadForm({ sections }) {
   }
 
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5">
-      <h2 className="font-semibold text-gray-800 mb-1">Bulk Upload Questions</h2>
-      <p className="text-sm text-gray-500 mb-4">
+    <section className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h2 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Bulk Upload Questions</h2>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
         Upload a .txt or .pdf file of questions in the format below - they'll be parsed and shown for review before
         anything is saved.{' '}
-        <button type="button" onClick={() => setShowFormat((v) => !v)} className="text-indigo-600 hover:underline">
+        <button type="button" onClick={() => setShowFormat((v) => !v)} className="text-indigo-600 dark:text-indigo-400 hover:underline">
           {showFormat ? 'Hide format' : 'Show format'}
         </button>
       </p>
 
       {showFormat && (
-        <pre className="text-xs bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4 overflow-x-auto whitespace-pre-wrap">
+        <pre className="text-xs bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 mb-4 overflow-x-auto whitespace-pre-wrap">
 {FORMAT_EXAMPLE}
         </pre>
       )}
@@ -486,19 +486,19 @@ function BulkQuestionUploadForm({ sections }) {
           <input type="file" accept=".txt,.pdf" onChange={handleFile} className="input w-full" />
         </Field>
 
-        {parsing && <p className="text-sm text-gray-500">Parsing {fileName}...</p>}
+        {parsing && <p className="text-sm text-gray-500 dark:text-gray-400">Parsing {fileName}...</p>}
 
         {parsed && (
-          <div className="border border-gray-200 rounded-lg p-3 space-y-2">
-            <p className="text-sm text-gray-700">
-              <span className="font-medium text-green-700">{parsed.questions.length} question{parsed.questions.length === 1 ? '' : 's'} parsed successfully</span>
+          <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-3 space-y-2">
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              <span className="font-medium text-green-700 dark:text-green-400">{parsed.questions.length} question{parsed.questions.length === 1 ? '' : 's'} parsed successfully</span>
               {parsed.errors.length > 0 && (
-                <span className="text-red-600"> - {parsed.errors.length} block{parsed.errors.length === 1 ? '' : 's'} had errors and will be skipped</span>
+                <span className="text-red-600 dark:text-red-400"> - {parsed.errors.length} block{parsed.errors.length === 1 ? '' : 's'} had errors and will be skipped</span>
               )}
             </p>
 
             {parsed.errors.length > 0 && (
-              <ul className="text-xs text-red-600 space-y-1">
+              <ul className="text-xs text-red-600 dark:text-red-400 space-y-1">
                 {parsed.errors.map((e, i) => (
                   <li key={i}>Block {e.position}: {e.message} ({e.preview}...)</li>
                 ))}
@@ -506,10 +506,10 @@ function BulkQuestionUploadForm({ sections }) {
             )}
 
             {parsed.questions.length > 0 && (
-              <ul className="text-sm text-gray-700 space-y-1 max-h-56 overflow-y-auto">
+              <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 max-h-56 overflow-y-auto">
                 {parsed.questions.map((q, i) => (
                   <li key={i} className="truncate">
-                    {i + 1}. {q.question} <span className="text-gray-400 text-xs">({q.type.toUpperCase()})</span>
+                    {i + 1}. {q.question} <span className="text-gray-400 dark:text-gray-500 text-xs">({q.type.toUpperCase()})</span>
                   </li>
                 ))}
               </ul>
@@ -523,11 +523,11 @@ function BulkQuestionUploadForm({ sections }) {
             >
               {saving ? 'Adding...' : `Add ${parsed.questions.length} Question${parsed.questions.length === 1 ? '' : 's'}`}
             </button>
-            {!subtopicId && <p className="text-xs text-amber-600">Select a sub-topic above before confirming.</p>}
+            {!subtopicId && <p className="text-xs text-amber-600 dark:text-amber-400">Select a sub-topic above before confirming.</p>}
           </div>
         )}
 
-        {status && <p className="text-sm text-indigo-600">{status}</p>}
+        {status && <p className="text-sm text-indigo-600 dark:text-indigo-400">{status}</p>}
       </div>
     </section>
   )
@@ -536,7 +536,7 @@ function BulkQuestionUploadForm({ sections }) {
 function Field({ label, children, className = '' }) {
   return (
     <label className={`block text-sm ${className}`}>
-      <span className="block text-gray-600 mb-1">{label}</span>
+      <span className="block text-gray-600 dark:text-gray-400 mb-1">{label}</span>
       {children}
     </label>
   )

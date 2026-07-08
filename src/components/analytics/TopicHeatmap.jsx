@@ -15,9 +15,9 @@ export function TopicHeatmap() {
   const { topicStats } = useAnalyticsData()
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-5">
-      <h3 className="font-semibold text-gray-800 mb-1">Topic-wise Accuracy Heatmap</h3>
-      <p className="text-xs text-gray-500 mb-4">Darker = higher accuracy</p>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Topic-wise Accuracy Heatmap</h3>
+      <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">Darker = higher accuracy</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {topicStats.map((t) => {
           const bg = colorForAccuracy(t.accuracyPct)

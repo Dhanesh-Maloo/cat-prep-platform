@@ -51,9 +51,9 @@ export function MockTestRunnerPage() {
     if (status === 'submitted' && test?.id === mockTestId) navigate(`/results/${mockTestId}`)
   }, [status, test, mockTestId, navigate])
 
-  if (mockTestError) return <p className="text-red-500">Couldn't load this test. Please try again.</p>
+  if (mockTestError) return <p className="text-red-500 dark:text-red-400">Couldn't load this test. Please try again.</p>
   if (!test) {
-    return <p className="text-gray-500">{mockTestLoading ? 'Loading test...' : 'Test not found.'}</p>
+    return <p className="text-gray-500 dark:text-gray-400">{mockTestLoading ? 'Loading test...' : 'Test not found.'}</p>
   }
 
   const section = sections[currentSectionIndex]
@@ -73,35 +73,35 @@ export function MockTestRunnerPage() {
   }
 
   return (
-    <div className="-mx-4 -my-8 min-h-[calc(100vh-8.5rem)] flex flex-col bg-gray-50">
-      <div className="bg-white border-b border-gray-200 px-3 sm:px-6 py-3 flex items-center justify-between gap-3">
+    <div className="-mx-4 -my-8 min-h-[calc(100vh-8.5rem)] flex flex-col bg-gray-50 dark:bg-gray-900">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-3 sm:px-6 py-3 flex items-center justify-between gap-3">
         <div className="min-w-0">
-          <h1 className="font-semibold text-gray-900 truncate">{test.title}</h1>
-          <p className="text-sm text-gray-500">{section.name}</p>
+          <h1 className="font-semibold text-gray-900 dark:text-gray-100 truncate">{test.title}</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{section.name}</p>
         </div>
         <Timer secondsRemaining={sectionTimeRemaining[section.key]} warning={showFiveMinuteWarning} />
       </div>
 
       {showFiveMinuteWarning && (
-        <div className="bg-red-50 text-red-700 text-sm text-center py-1.5 font-medium">
+        <div className="bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-400 text-sm text-center py-1.5 font-medium">
           Less than 5 minutes remaining in this section - it will auto-submit at zero.
         </div>
       )}
 
       <div className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-6 p-3 sm:p-6">
-        <div className="flex-1 bg-white border border-gray-200 rounded-lg p-4 sm:p-6 relative min-w-0">
+        <div className="flex-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sm:p-6 relative min-w-0">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
               Question {section.questionIds.indexOf(currentQuestionId) + 1} of {section.questionIds.length}
             </span>
             {question.type === 'tita' && (
-              <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">
+              <span className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full font-medium">
                 TITA - Type In The Answer
               </span>
             )}
           </div>
 
-          <p className="text-gray-900 font-medium mb-5">{question.question}</p>
+          <p className="text-gray-900 dark:text-gray-100 font-medium mb-5">{question.question}</p>
 
           {question.type === 'mcq' ? (
             <div className="space-y-2 max-w-lg">
@@ -112,8 +112,8 @@ export function MockTestRunnerPage() {
                   onClick={() => selectAnswer(question.id, i)}
                   className={`w-full text-left border rounded-lg px-4 py-2.5 transition-colors ${
                     answer.selectedIndex === i
-                      ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                      : 'border-gray-200 hover:border-indigo-300 text-gray-700'
+                      ? 'border-indigo-500 dark:border-indigo-400 bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300'
+                      : 'border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600 text-gray-700 dark:text-gray-300'
                   }`}
                 >
                   {option}
@@ -126,7 +126,7 @@ export function MockTestRunnerPage() {
               value={answer.textAnswer || ''}
               onChange={(e) => setTitaAnswer(question.id, e.target.value)}
               placeholder="Type your answer"
-              className="border border-gray-300 rounded-lg px-4 py-2.5 max-w-xs w-full focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500 rounded-lg px-4 py-2.5 max-w-xs w-full focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
           )}
 
@@ -137,7 +137,7 @@ export function MockTestRunnerPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium ${
                 answer.markedForReview
                   ? 'bg-purple-600 text-white'
-                  : 'bg-purple-50 text-purple-700 hover:bg-purple-100'
+                  : 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 hover:bg-purple-100'
               }`}
             >
               {answer.markedForReview ? 'Marked for Review' : 'Mark for Review & Next'}
@@ -145,7 +145,7 @@ export function MockTestRunnerPage() {
             <button
               type="button"
               onClick={handleClear}
-              className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100"
+              className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               Clear Response
             </button>
@@ -175,7 +175,7 @@ export function MockTestRunnerPage() {
           )}
         </div>
 
-        <div className="w-full lg:w-64 bg-white border border-gray-200 rounded-lg p-4 h-fit">
+        <div className="w-full lg:w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-fit">
           <QuestionNavPanel
             questionIds={section.questionIds}
             questionsById={questionsById}

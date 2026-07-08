@@ -28,27 +28,27 @@ export function ForumThreadPage() {
     }
   }
 
-  if (error && !thread) return <p className="text-red-500">Couldn't load this thread.</p>
-  if (!thread) return <p className="text-gray-500">Loading...</p>
+  if (error && !thread) return <p className="text-red-500 dark:text-red-400">Couldn't load this thread.</p>
+  if (!thread) return <p className="text-gray-500 dark:text-gray-400">Loading...</p>
 
   return (
     <div className="max-w-2xl mx-auto">
-      <p className="text-sm text-gray-400 mb-4">
-        <Link to={`/forum/${thread.subtopic_id}`} className="hover:text-indigo-600">← {thread.subtopics?.name}</Link>
+      <p className="text-sm text-gray-400 dark:text-gray-500 mb-4">
+        <Link to={`/forum/${thread.subtopic_id}`} className="hover:text-indigo-600 dark:hover:text-indigo-400">← {thread.subtopics?.name}</Link>
       </p>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-5 mb-6">
-        <h1 className="text-xl font-semibold text-gray-900 mb-2">{thread.title}</h1>
-        <p className="text-gray-700 whitespace-pre-line">{thread.body}</p>
-        <p className="text-xs text-gray-400 mt-3">{thread.author_name} · {new Date(thread.created_at).toLocaleDateString()}</p>
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 mb-6">
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{thread.title}</h1>
+        <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">{thread.body}</p>
+        <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">{thread.author_name} · {new Date(thread.created_at).toLocaleDateString()}</p>
       </div>
 
-      <h2 className="font-semibold text-gray-800 mb-3">{replies.length} {replies.length === 1 ? 'Reply' : 'Replies'}</h2>
+      <h2 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">{replies.length} {replies.length === 1 ? 'Reply' : 'Replies'}</h2>
       <div className="space-y-3 mb-6">
         {replies.map((r) => (
-          <div key={r.id} className="bg-white border border-gray-200 rounded-lg p-4">
-            <p className="text-gray-700 whitespace-pre-line">{r.body}</p>
-            <p className="text-xs text-gray-400 mt-2">{r.author_name} · {new Date(r.created_at).toLocaleDateString()}</p>
+          <div key={r.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">{r.body}</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">{r.author_name} · {new Date(r.created_at).toLocaleDateString()}</p>
           </div>
         ))}
       </div>
@@ -61,15 +61,15 @@ export function ForumThreadPage() {
             placeholder="Write a reply..."
             rows={3}
             required
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="input w-full"
           />
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">
             Post Reply
           </button>
         </form>
       ) : (
-        <p className="text-sm text-amber-600">
+        <p className="text-sm text-amber-600 dark:text-amber-400">
           <Link to="/login" className="underline">Log in</Link> to reply.
         </p>
       )}
