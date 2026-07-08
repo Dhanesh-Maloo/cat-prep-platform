@@ -33,6 +33,17 @@ export function HomePage() {
         </Link>
       </div>
 
+      <Link
+        to="/daily-challenge"
+        className="mt-10 flex items-center justify-between gap-4 max-w-xl mx-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-4 rounded-xl shadow-md hover:shadow-lg transition-shadow text-left"
+      >
+        <div>
+          <p className="text-xs uppercase tracking-wide text-indigo-200 font-semibold mb-0.5">Today's Challenge</p>
+          <p className="font-medium">One shared question, every day - build your streak.</p>
+        </div>
+        <span className="text-3xl shrink-0">🎯</span>
+      </Link>
+
       {loading ? (
         <p className="text-gray-400 dark:text-gray-500 mt-16">Loading syllabus...</p>
       ) : (

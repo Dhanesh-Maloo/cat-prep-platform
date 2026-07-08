@@ -26,6 +26,7 @@ import { PlaybookPage } from './pages/PlaybookPage'
 import { FormulaSheetPage } from './pages/FormulaSheetPage'
 import { PercentilePredictorPage } from './pages/PercentilePredictorPage'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { DailyChallengePage } from './pages/DailyChallengePage'
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="formula-sheet" element={<FormulaSheetPage />} />
             <Route path="percentile-predictor" element={<PercentilePredictorPage />} />
+            <Route path="daily-challenge" element={<DailyChallengePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
