@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useExamSession } from '../store/examSession'
 import { useAuth } from '../lib/auth'
 import { saveMockTestAttempt, updateQuestionErrorTag } from '../api/attempts'
+import { getMockTestCohortStats } from '../api/cohortStats'
 
 const ERROR_TAGS = [
   { key: 'silly_mistake', label: 'Silly mistake' },
@@ -17,6 +18,7 @@ export function ResultsPage() {
   const savedRef = useRef(false)
   const [questionAttemptIds, setQuestionAttemptIds] = useState({})
   const [saveState, setSaveState] = useState('idle')
+  const [cohort, setCohort] = useState(null)
 
   useEffect(() => {
     if (authLoading || !test || !result || savedRef.current) return
@@ -36,6 +38,11 @@ export function ResultsPage() {
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, test, result])
+
+  useEffect(() => {
+    if (!test || !result) return
+    getMockTestCohortStats(test.id, result.rawScore, result.sectionScores).then(setCohort)
+  }, [test, result])
 
   if (!test || test.id !== mockTestId || !result) {
     return (
@@ -108,6 +115,50 @@ export function ResultsPage() {
           </div>
         ))}
       </div>
+
+      {cohort && (
+        <>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-1">Where you stand</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+            Computed from everyone who's actually taken this mock - not a generic table.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <StatCard label="Rank" value={`#${cohort.rank} of ${cohort.totalAttempts}`} />
+            <StatCard
+              label="Percentile (this cohort)"
+              value={cohort.percentile !== null ? `${cohort.percentile}` : 'Need more attempts'}
+            />
+            <StatCard
+              label="vs. cohort average"
+              value={`${result.rawScore > cohort.cohortAvg ? '+' : ''}${Math.round(result.rawScore - cohort.cohortAvg)}`}
+              accent={result.rawScore >= cohort.cohortAvg ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}
+            />
+          </div>
+          {cohort.totalAttempts < 5 && (
+            <p className="text-xs text-gray-400 dark:text-gray-500 -mt-4 mb-8">
+              Only {cohort.totalAttempts} {cohort.totalAttempts === 1 ? 'person has' : 'people have'} taken this mock so far - rank and percentile will get more meaningful as more people take it.
+            </p>
+          )}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+            {Object.entries(result.sectionScores).map(([key, s]) => {
+              const avg = cohort.sectionCohortAvg[key]
+              if (avg === null || avg === undefined) return null
+              const diff = Math.round(s.raw - avg)
+              return (
+                <div key={key} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-1">{key}</h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    You: {s.raw} · Cohort avg: {avg.toFixed(1)}
+                  </p>
+                  <p className={`text-xs font-medium mt-1 ${diff >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                    {diff >= 0 ? `+${diff} above average` : `${diff} below average`}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+        </>
+      )}
 
       {wrongQuestions.length > 0 && (
         <>

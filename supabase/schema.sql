@@ -135,6 +135,26 @@ create table if not exists mock_test_attempts (
   end_time timestamptz
 );
 
+-- Institute-style "All India Rank": lets any user fetch the anonymized score
+-- distribution for a specific mock test (raw_score + section_scores only, no
+-- user_id, no timestamps) so the client can compute rank/percentile/cohort
+-- averages against real test-takers instead of a generic historical table.
+-- security definer to narrowly bypass the "own rows only" RLS policy above
+-- for just this anonymized read.
+create or replace function get_mock_test_cohort(p_mock_test_id uuid)
+returns table (raw_score numeric, section_scores jsonb)
+language sql
+security definer
+set search_path = public
+as $$
+  select raw_score, section_scores
+  from mock_test_attempts
+  where mock_test_id = p_mock_test_id
+    and end_time is not null;
+$$;
+
+grant execute on function get_mock_test_cohort(uuid) to authenticated, anon;
+
 -- APPROXIMATION ONLY — not official CAT data. Mirrors src/lib/percentileTable.js.
 create table if not exists percentile_lookup (
   min_score int primary key,
