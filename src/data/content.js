@@ -22,6 +22,7 @@ At the 99th Percentile: high scorers don't just identify tone, they anticipate t
       { title: 'Tone & attitude word list (PDF)', url: 'https://www.vocabulary.com/lists/' },
       { title: 'Alternative video: CAT 2025 RC Series - How to Solve Main Idea Questions', url: 'https://www.youtube.com/watch?v=73P--40QYVk' },
       { title: 'Alternative video: How to Analyse RC Tones (CAT VARC 2024)', url: 'https://www.youtube.com/watch?v=fOKoXugVYG4' },
+      { title: '2IIM free CAT Reading Comprehension question bank (topic-wise questions with full video and text solutions)', url: 'https://iim-cat-questions-answers.2iim.com/verbal/reading-comprehension/' },
     ],
   },
 
@@ -45,6 +46,7 @@ At the 99th Percentile: instead of solving for the full order, high scorers chec
       { title: 'Sentence connector cheat-sheet', url: 'https://www.grammarly.com/blog/transition-words/' },
       { title: 'Alternative video: Para Jumbles & Paragraph Odd One Out (CAT 2025 VARC One Shot)', url: 'https://www.youtube.com/watch?v=w2JubYI2mzI' },
       { title: 'Alternative video: Master the PAIR-UP Technique for Para Jumbles', url: 'https://www.youtube.com/watch?v=jRGijoidr14' },
+      { title: '2IIM free CAT Para Jumble / Sentence Rearrangement question bank with detailed solutions', url: 'https://iim-cat-questions-answers.2iim.com/verbal/sentence-rearrangement/' },
     ],
   },
 
@@ -84,7 +86,7 @@ At the 99th Percentile: top DILR scorers build the master table once, then scan 
       title: 'CAT DILR | Data Interpretation Caselets For CAT | Caselet DI Concept',
     },
     resources: [
-      { title: 'CAT DILR previous year sets (2015-2023, free)', url: 'https://www.2iim.com/cat-question-papers' },
+      { title: '2IIM solved CAT 2017 DILR set - Rural Kids Survey (multi-layered caselet with overlapping categories, full solutions)', url: 'https://iim-cat-questions-answers.2iim.com/DILR_CAT-2017-1_Rural_Kids_Survey/' },
       { title: 'Caselet-to-table conversion practice worksheet', url: 'https://www.handakafunda.com' },
       { title: 'DI approximation techniques guide', url: 'https://www.wizako.com' },
       { title: 'Alternative video: Understanding Caselets in Data Interpretation', url: 'https://www.youtube.com/watch?v=yw4zFw5_Fh4' },
@@ -108,7 +110,7 @@ At the 99th Percentile: high scorers convert every percentage question into a mu
     },
     resources: [
       { title: 'Fraction-to-percentage table (printable PDF)', url: 'https://www.mbauniverse.com' },
-      { title: 'CAT QA arithmetic previous year questions', url: 'https://www.2iim.com/cat-question-papers' },
+      { title: '2IIM free CAT question bank: Percents, Profits, SI/CI (previous year questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/arithmetic/percents-profits/' },
       { title: 'Profit & Loss practice set with solutions', url: 'https://www.testfunda.com' },
       { title: 'Alternative video: CAT Profit & Loss - All PYQs with Timer', url: 'https://www.youtube.com/watch?v=q6elvXFpJe0' },
       { title: 'Alternative video: Profit Loss Discount - Basic to Advanced', url: 'https://www.youtube.com/watch?v=9v7Vp_mZPr4' },
@@ -130,7 +132,7 @@ At the 99th Percentile: 99%ilers apply the "could the passage be true while this
       title: 'How to Crack CAT RC Inference Based Questions Easily',
     },
     resources: [
-      { title: 'Inference vs. assumption practice drills', url: 'https://www.2iim.com' },
+      { title: '2IIM free CAT Critical Reasoning question bank - inference, assumption, and main-idea style questions with solutions', url: 'https://iim-cat-questions-answers.2iim.com/verbal/critical-reasoning/' },
       { title: 'CAT RC inference question bank (free)', url: 'https://www.handakafunda.com' },
       { title: 'Logical connectors reference sheet', url: 'https://www.grammarly.com/blog/transition-words/' },
       { title: 'Alternative video: How to Solve Inference Based Questions in RC (Career Launcher)', url: 'https://www.youtube.com/watch?v=_rjuDn3G3p0' },
@@ -154,7 +156,7 @@ At the 99th Percentile: high scorers verify factored roots using sum-of-roots an
     },
     resources: [
       { title: 'Quadratic equations formula sheet (PDF)', url: 'https://www.mbauniverse.com' },
-      { title: 'CAT QA algebra previous year questions', url: 'https://www.2iim.com/cat-question-papers' },
+      { title: '2IIM free CAT question bank: Linear and Quadratic Equations (previous year questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/algebra/linear-quadratic-equations/' },
       { title: 'Sum/product of roots practice set', url: 'https://www.wizako.com' },
       { title: 'Alternative video: Quadratic Equations - Lecture 04 (CAT Quant)', url: 'https://www.youtube.com/watch?v=G3pESsL7s8U' },
       { title: 'Alternative video: Quadratic Equations Formulas - Important Questions', url: 'https://www.youtube.com/watch?v=CGmRSgkVzJ4' },
@@ -179,6 +181,7 @@ At the 99th Percentile: top scorers keep the standard triangle triples and circl
       { title: 'Recommended Book: NCERT Class 10 Mathematics, Chapter 6 - Triangles (official free textbook PDF covering similarity, Pythagoras theorem, and area ratios)', url: 'https://ncert.nic.in/textbook/pdf/jemh106.pdf' },
       { title: 'Alternative video: Circles Geometry CAT | Top Must Do Questions - 01 | Quant for CAT 2026 | Career Launcher', url: 'https://www.youtube.com/watch?v=dgXgfj9gDpg' },
       { title: '2IIM free CAT question bank: Geometry - Triangles (topic-wise questions with full video and text solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/geometry/geometry-triangles/' },
+      { title: '2IIM free CAT question bank: Trigonometry (occasional CAT questions combine basic trig with triangles/heights-and-distances)', url: 'https://iim-cat-questions-answers.2iim.com/quant/geometry/trigonometry/' },
     ],
   },
 
@@ -263,6 +266,8 @@ At the 99th Percentile: high scorers build a cyclicity table for bases 2 through
       { title: 'Recommended Book: Quantitative Aptitude for CAT by Arun Sharma (McGraw Hill) - covers remainder theorems and factor-counting with graded exercises', url: 'https://edge.mheducation.co.in/course/CAT-QA-ArunSharma-6' },
       { title: 'Alternative video: Remainders - 2 | Number System | CAT | Quantitative Aptitude', url: 'https://www.youtube.com/watch?v=qi09qJiT1es' },
       { title: 'Free practice: 2IIM CAT Questions - Number Systems: Remainders (question bank with worked solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/number-system/remainders/' },
+      { title: '2IIM free CAT question bank: Factors (previous year and practice questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/number-system/factors/' },
+      { title: '2IIM free CAT question bank: Factorials (previous year and practice questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/number-system/factorial/' },
     ],
   },
 
@@ -284,6 +289,7 @@ At the 99th Percentile: strong scorers ask "does order matter" as an automatic f
       { title: 'Recommended Book: Quantitative Aptitude for CAT by Arun Sharma (McGraw Hill) - dedicated Permutation & Combination block with level-wise exercises', url: 'https://edge.mheducation.co.in/course/CAT-QA-ArunSharma-6' },
       { title: 'Alternative video: Permutation and Combination - Previous year CAT Questions | Quantitative Aptitude', url: 'https://www.youtube.com/watch?v=RAOTFT1_Ynk' },
       { title: 'Free practice: CAT Permutation and Combination Formula PDF and practice questions (Cracku)', url: 'https://cracku.in/cat-permutation-and-combination-formula-pdf/' },
+      { title: '2IIM free CAT question bank: Permutation, Combination & Probability (33 practice questions plus actual CAT/XAT/IPMAT questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/permutation-probability/' },
     ],
   },
 
@@ -305,6 +311,7 @@ At the 99th Percentile: top scorers translate every probability question back in
       { title: 'Recommended Book: Quantitative Aptitude for CAT by Arun Sharma (McGraw Hill) - Probability chapter with worked examples and level-wise practice', url: 'https://edge.mheducation.co.in/course/CAT-QA-ArunSharma-6' },
       { title: 'Alternative video: Probability 1 | CAT Preparation | Quantitative Aptitude', url: 'https://www.youtube.com/watch?v=b6hmLsjbA7E' },
       { title: 'Free practice: 50+ CAT Probability & Combinatorics Questions with video solutions (Cracku)', url: 'https://cracku.in/cat-probability-combinatorics-questions' },
+      { title: '2IIM free CAT question bank: Permutation, Combination & Probability (covers conditional probability and Bayes\' theorem, with actual CAT questions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/permutation-probability/' },
     ],
   },
 
@@ -326,6 +333,7 @@ At the 99th Percentile: high scorers never solve a three-set Venn problem algebr
       { title: 'Recommended Book: Quantitative Aptitude for CAT by Arun Sharma (McGraw Hill) - covers Set Theory, Venn diagrams, and Functions with graded practice', url: 'https://edge.mheducation.co.in/course/CAT-QA-ArunSharma-6' },
       { title: 'Alternative video: Set Theory | (GRE/GMAT/CAT) (Venn Diagrams)', url: 'https://www.youtube.com/watch?v=hupkYQh2ADE' },
       { title: 'Free practice: 2IIM CAT Questions - Set Theory: Union and Intersection (question bank with worked solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/arithmetic/set-theory/' },
+      { title: '2IIM free CAT question bank: Functions (previous year and practice questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/algebra/functions/' },
     ],
   },
   'rc-author-purpose': {
@@ -471,6 +479,7 @@ At the 99th Percentile: strong solvers place the single most-constrained clue fi
       { title: 'Recommended Book: How to Prepare for Logical Reasoning for CAT by Arun Sharma - McGraw Hill, dedicated chapters on linear and circular arrangements with graded exercises', url: 'https://www.amazon.in/How-Prepare-Logical-Reasoning-CAT/dp/9339205588' },
       { title: 'Alternative video: Seating Arrangement | Logical Reasoning for CAT | DILR Preparation - Cracku', url: 'https://www.youtube.com/watch?v=Go8vwzwm3CA' },
       { title: 'Cracku CAT DILR Arrangement Questions with video solutions from actual previous year papers', url: 'https://cracku.in/cat-lr-arrangement-questions' },
+      { title: '2IIM solved CAT 2017 DILR set - Eight Friends (airplane seating arrangement with grouping, ordering, and adjacency constraints, full solutions)', url: 'https://iim-cat-questions-answers.2iim.com/DILR_CAT-2017-2_Eight_Friends/' },
     ],
   },
 
@@ -534,6 +543,7 @@ At the 99th Percentile: strong scorers default to filling a Venn diagram from th
       { title: 'Recommended Book: How to Prepare for Logical Reasoning for CAT by Arun Sharma (McGraw Hill) - includes a chapter on Venn Diagrams and Network Diagrams', url: 'https://www.amazon.in/How-Prepare-Logical-Reasoning-CAT/dp/9339205588' },
       { title: 'Alternative video: CAT Logical Reasoning Venn Diagrams (part 2)', url: 'https://www.youtube.com/watch?v=00NLN38lIc0' },
       { title: 'Cracku free CAT Venn Diagrams questions with detailed and video solutions', url: 'https://cracku.in/cat-di-venn-diagrams-questions' },
+      { title: '2IIM free CAT question bank: Set Theory - Union and Intersection (question bank with worked solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/arithmetic/set-theory/' },
     ],
   },
   'qa-time-speed-distance': {
@@ -596,6 +606,7 @@ At the 99th Percentile: for mixture and alligation problems, top scorers draw th
       { title: 'Recommended Book: Quantum CAT by Sarvesh K Verma (Arihant) - dedicated Averages, Mixtures and Alligations chapter with alligation-rule practice problems', url: 'https://www.amazon.in/Arihant-Quantum-Quantitative-Aptitude-Competitive/dp/9368404836' },
       { title: 'Alternative video: Mixtures & Alligations | CAT Previous Year Questions | Udit Saini', url: 'https://www.youtube.com/watch?v=y1UGVs1tgzQ' },
       { title: 'Cracku free practice: CAT Averages, Mixtures & Alligations questions with video solutions', url: 'https://cracku.in/cat-averages-mixtures-alligations-questions' },
+      { title: '2IIM free CAT question bank: Ratios, Mixtures and Averages (previous year questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/arithmetic/ratio-mixtures-averages/' },
     ],
   },
 
@@ -638,6 +649,7 @@ At the 99th Percentile: top scorers are automatic about flipping the inequality 
       { title: 'Recommended Book: Quantum CAT by Sarvesh K Verma (Arihant) - Algebra section covers linear equations and inequalities with worked examples', url: 'https://www.amazon.in/Arihant-Quantum-Quantitative-Aptitude-Competitive/dp/9368404836' },
       { title: 'Alternative video: CAT: Polynomials - L3 | Quantitative Ability | Unacademy CAT', url: 'https://www.youtube.com/watch?v=w88DexBWYMY' },
       { title: '2IIM free CAT question bank: Linear Equations and Quadratic Equations (previous year questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/algebra/linear-quadratic-equations/' },
+      { title: '2IIM free CAT question bank: Inequalities (24 practice questions plus actual CAT/XAT/IPMAT questions with solutions)', url: 'https://iim-cat-questions-answers.2iim.com/quant/algebra/inequalities/' },
     ],
   },
 
