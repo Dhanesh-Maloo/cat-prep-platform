@@ -23,6 +23,7 @@ export function Layout() {
       <Link to="/mock-tests" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Mock Tests</Link>
       <Link to="/analytics" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Analytics</Link>
       <Link to="/resources" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Resources</Link>
+      <Link to="/reading-list" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Reading List</Link>
       {user && (
         <>
           <Link to="/planner" className="hover:text-indigo-600" onClick={() => setMenuOpen(false)}>Planner</Link>

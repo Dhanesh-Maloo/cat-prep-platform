@@ -15,7 +15,7 @@ export function ResourcesPage() {
         Previous year papers, free video playlists, and formula sheets - aggregated from every sub-topic.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
         <TiltCard className="rounded-lg">
           <Link to="/playbook" className="block bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-800 rounded-lg p-4 h-full hover:border-indigo-300 dark:hover:border-indigo-600">
             <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">99th Percentile Playbook</h2>
@@ -32,6 +32,12 @@ export function ResourcesPage() {
           <Link to="/percentile-predictor" className="block bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-800 rounded-lg p-4 h-full hover:border-indigo-300 dark:hover:border-indigo-600">
             <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Percentile Predictor</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">Type in a raw score from a mock or the real exam to see an approximate percentile.</p>
+          </Link>
+        </TiltCard>
+        <TiltCard className="rounded-lg">
+          <Link to="/reading-list" className="block bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-800 rounded-lg p-4 h-full hover:border-indigo-300 dark:hover:border-indigo-600">
+            <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Reading List</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Curated long-form journalism, essays, and daily reads to build RC comprehension over time.</p>
           </Link>
         </TiltCard>
       </div>
